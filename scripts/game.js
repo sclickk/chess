@@ -301,21 +301,9 @@ function Game() {
 
     // moveIntent is the tile the player wants pieceToMove to change to.
     var moveIntent = "";
-    // pieceDistinguish enables notation that can distinguish between
-    // two or more pieces of the same type moving to a tile. For
-    // example, the notation Nbd7 means that there's another knight
-    // that can move to d7, but the player wants to move the knight
-    // in file b.
-    var pieceDistinguish = null;
     // Here we set moveIntent.
     if (willCapture) {
       moveIntent = input.substr((input.match(/x/).index + 1), 2);
-      // For example, gxh3
-      if (pieceToMove == "p") {
-        pieceDistinguish = input[0];
-      } else if (input.match(/x/).index == 2) {
-        pieceDistinguish = input[1];
-      }
     } else if (pieceToMove == "p" && !willCapture) {
       moveIntent = input.substr(0, 2);
     } else {
@@ -351,32 +339,31 @@ function Game() {
 
     // needToDistinguish determines whether or not special notation is *needed*
     // to tell which piece moves where. If possibleIntents has more than one
-    // value, there is a need to distinguish. See pieceDistinguish below.
+    // value, there is a need to distinguish.
     var needToDistinguish = (possibleIntents.length > 1 ? true : false);
 
-    console.log(possibleIntents);
-
-    if (input[3] != undefined) {
-      if (input[3].match(/[1-8]/)) {
-        moveIntent = input[2] + input[3];
-        pieceDistinguish = input[1];
-      }
-    } else {
+    // pieceDistinguish enables notation that can distinguish between
+    // two or more pieces of the same type moving to a tile. For
+    // example, the notation Nbd7 means that there's another knight
+    // that can move to d7, but the player wants to move the knight
+    // in file b.
+    var pieceDistinguish = null;
+    if (needToDistinguish) {
       if (pieceToMove == "p") {
-        moveIntent = input[0] + input[1];
-      } else {
-        moveIntent = input[1] + input[2];
+        // For example, gxh3 and Nbd7
+        pieceDistinguish = (pieceToMove == "p" ? input[0] : input[1]); 
+      }
+      // Determine if pieceDistinguish is a file or a rank.
+      if (pieceDistinguish != null) {
+        if (pieceDistinguish.match(/[a-h]/)) {
+          var distinguishType = "file";
+        } else if (pieceDistinguish.match(/[1-8]/)) {
+          var distinguishType = "rank";
+        }
       }
     }
 
-    // Determine if pieceDistinguish is a file or a rank.
-    if (pieceDistinguish != null) {
-      if (pieceDistinguish.match(/[a-h]/)) {
-        var distinguishType = "file";
-      } else if (pieceDistinguish.match(/[1-8]/)) {
-        var distinguishType = "rank";
-      }
-    }
+    console.log(possibleIntents);
 
     if (!this.badInput(input)) {
       if (!this.willCastle(input)) {
