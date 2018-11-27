@@ -1,4 +1,4 @@
-function Board(boardHTML) {
+function ChessBoard(boardHTML) {
   // Stores all 64 instances of the Tile() class.
   this.tiles = new Array();
   // Stores the 32 Piece()s.
@@ -41,7 +41,7 @@ function Board(boardHTML) {
       // Mark that the board was already created.
       this.boardHTML.setAttribute("isChessBoard", "true");
     } else {
-      console.warn("Board \'" + this.boardHTML.id + "\' already exists.");
+      console.warn("ChessBoard \'" + this.boardHTML.id + "\' already exists.");
     }
   }
   /*
