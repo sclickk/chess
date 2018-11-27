@@ -223,8 +223,6 @@ function Game() {
       var moveSuccessful = false;
 
       if (this.willCastle(input)) {
-        var rankToCheck = (m.turn == "W" ? "1" : "8");
-        console.log(rankToCheck);
         // Look for "O-O-O" first to prevent accidental matching on "O-O".
         // "O-O-O" (or 0-0-0) is to castle on the queen side.
         // "O-O" (or 0-0) is to castle on the king side.
