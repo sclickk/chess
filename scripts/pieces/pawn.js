@@ -5,7 +5,7 @@ function Pawn(pos, color) {
   this.pos = this.p.pos;
   this.isDead = this.p.isDead;
   this.rangeOfMovement = this.p.rangeOfMovement;
-  this.hasMoved = this.p.hasMoved;
+  this.timesMoved = this.p.timesMoved;
   this.changePos = this.p.changePos;
 
   // Pawns can seem simple but are quite quirky pieces. Pawns can move either
@@ -36,7 +36,7 @@ function Pawn(pos, color) {
       if (t.get(this.pos[0] + (this.pos[1] - -1)) == "") {
         range = range.concat(this.pos[0] + (this.pos[1] - -1));
       }
-      if (this.hasMoved == false) { // A pawn can move two pieces ahead on their first move.
+      if (this.timesMoved == 0) { // A pawn can move two pieces ahead on their first move.
         // Make sure the tile is empty.
         if (t.get(this.pos[0] + (this.pos[1] - -2)) == "") {
           range = range.concat(this.pos[0] + (this.pos[1] - -2));
@@ -49,7 +49,7 @@ function Pawn(pos, color) {
         range = range.concat(this.pos[0] + (this.pos[1] - 1));
       }
       range = range.concat(this.pos[0] + (this.pos[1] - 1));
-      if (this.hasMoved == false) { // A pawn can move two pieces ahead on their first move.
+      if (this.timesMoved == 0) { // A pawn can move two pieces ahead on their first move.
         // Make sure the tile is empty.
         if (t.get(this.pos[0] + (this.pos[1] - 2)) == "") {
           range = range.concat(this.pos[0] + (this.pos[1] - 2));

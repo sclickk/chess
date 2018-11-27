@@ -5,7 +5,7 @@ function Knight(pos, color) {
   this.pos = this.p.pos;
   this.isDead = this.p.isDead;
   this.rangeOfMovement = this.p.rangeOfMovement;
-  this.hasMoved = this.p.hasMoved;
+  this.timesMoved = this.p.timesMoved;
   this.changePos = this.p.changePos;
 
   // Knights can move 2 tiles in any direction, then another tile adjacent to it.

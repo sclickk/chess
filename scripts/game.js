@@ -156,7 +156,7 @@ function Game() {
         var c = gameScope.chessBoard.pieces[i];
         if (c.color == m.turn) {
           if (!c.isDead) {
-            if (!c.hasMoved) {
+            if (c.timesMoved == 0) {
               if (side == "queen") {
                 if (c.constructor.name == "King") {
                   c.changePos("c" + rankToCheck);

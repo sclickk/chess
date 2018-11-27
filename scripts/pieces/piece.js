@@ -26,7 +26,7 @@ function Piece(pos, char) {
    * This manages instances whereby a rule depends on whether on not a piece
    * has moved, such as castling.
    */
-  this.hasMoved = false;
+  this.timesMoved = 0;
 
   t.set(this.pos, this.char);
 
@@ -44,6 +44,6 @@ function Piece(pos, char) {
     t.set(this.pos, "");
     this.pos = newPos;
     t.set(newPos, this.char);
-    this.hasMoved = true;
+    this.timesMoved++;
   }
 }
