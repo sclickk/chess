@@ -231,9 +231,6 @@ function Game() {
           case "p": pieceClassName = "Pawn"; break;
         }
     
-        // Sets to true when the player checks their opponent
-        var checkedOpposingPlayer = false;
-    
         // Sets to true when we can pass a given move as valid.
         var moveSuccessful = false;
         // willCapture is a boolean that determines whether or not the pieceToMove
