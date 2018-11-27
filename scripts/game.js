@@ -209,7 +209,12 @@ function Game() {
           this.performCastle("king", input);
         }
       } else {
-        // pieceToMove is the piece that the player intends to move by the next move.
+        // Most of the following code is based on Appendix C of the FIDE Laws
+        // of Chess, doing the work of interpreting what the player wants to
+        // do based on an input given as Algrebraic chess notation.
+
+        // pieceToMove is the type of piece that the player intends to move.
+        // Based on FIDE C.1, C.2, and C.4
         var pieceToMove = (input[0].match(/(Q|K|R|B|N)/) ? input[0] : "p");
     
         // With pieceClassName, we can use piece.constructor.name in order to
@@ -232,7 +237,7 @@ function Game() {
         // Sets to true when we can pass a given move as valid.
         var moveSuccessful = false;
         // willCapture is a boolean that determines whether or not the pieceToMove
-        // will make a capture on this move.
+        // will make a capture on this move. Based on FIDE C.9
         var willCapture = input.match(/x/) ? true : false;
   
         // moveIntent is the tile the player wants pieceToMove to change to.
@@ -274,7 +279,7 @@ function Game() {
         }
         // needToDistinguish determines whether or not special notation is *needed*
         // to tell which piece moves where. If possibleIntents has more than one
-        // value, there is a need to distinguish.
+        // value, there is a need to distinguish. See FIDE C.10 for more info.
         var needToDistinguish = (possibleIntents.length > 1 ? true : false);
   
         // pieceDistinguish enables notation that can distinguish between
