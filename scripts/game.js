@@ -216,20 +216,6 @@ function Game() {
         // pieceToMove is the type of piece that the player intends to move.
         // Based on FIDE C.1, C.2, and C.4
         var pieceToMove = (input[0].match(/(Q|K|R|B|N)/) ? input[0] : "p");
-    
-        // With pieceClassName, we can use piece.constructor.name in order to
-        // easily determine what class the piece is inherited from. It's one of the
-        // weirdest features in JavaScript, and it probably isn't best programming
-        // practice, but why not?
-        var pieceClassName = "";
-        switch (pieceToMove) {
-          case "Q": pieceClassName = "Queen"; break;
-          case "K": pieceClassName = "King"; break;
-          case "R": pieceClassName = "Rook"; break;
-          case "B": pieceClassName = "Bishop"; break;
-          case "N": pieceClassName = "Knight"; break;
-          case "p": pieceClassName = "Pawn"; break;
-        }
 
         // willCapture is a boolean that determines whether or not the pieceToMove
         // will make a capture on this move. Based on FIDE C.9
@@ -260,6 +246,19 @@ function Game() {
           var c = gameScope.chessBoard.pieces[i];
           // Make sure the piece is on the player's color.
           if (c.color == m.turn) {
+            // With pieceClassName, we can use piece.constructor.name in order to
+            // easily determine what class the piece is inherited from. It's one of the
+            // weirdest features in JavaScript, and it probably isn't best programming
+            // practice, but why not?
+            var pieceClassName = "";
+            switch (pieceToMove) {
+              case "Q": pieceClassName = "Queen"; break;
+              case "K": pieceClassName = "King"; break;
+              case "R": pieceClassName = "Rook"; break;
+              case "B": pieceClassName = "Bishop"; break;
+              case "N": pieceClassName = "Knight"; break;
+              case "p": pieceClassName = "Pawn"; break;
+            }
             // Make sure this piece is of the type the player knows it is.
             if (c.constructor.name == pieceClassName) {
               // Make sure the piece isn't dead.
@@ -272,56 +271,62 @@ function Game() {
             }
           }
         }
-        // needToDistinguish determines whether or not special notation is *needed*
-        // to tell which piece moves where. If possibleIntents has more than one
-        // value, there is a need to distinguish. See FIDE C.10 for more info.
-        var needToDistinguish = (possibleIntents.length > 1 ? true : false);
-  
-        // pieceDistinguish enables notation that can distinguish between
-        // two or more pieces of the same type moving to a tile. For
-        // example, the notation Nbd7 means that there's another knight
-        // that can move to d7, but the player wants to move the knight
-        // in file b.
-        var pieceDistinguish = null;
-        if (needToDistinguish) {
-          // For example, gxh3 and Nbd7
-          pieceDistinguish = (pieceToMove == "p" ? input[0] : input[1]); 
-          // Determine if pieceDistinguish is a file or a rank.
-          if (pieceDistinguish.match(/[a-h]/)) {
-            var distinguishType = "file";
-          } else if (pieceDistinguish.match(/[1-8]/)) {
-            var distinguishType = "rank";
-          }
-        }
-  
-        console.log(possibleIntents);
 
-        // Cycle through possibleIntents and determine which is the pieceIntent.
-        for (var i = 0; i < possibleIntents.length; i++) {
-          var c = possibleIntents[i];
-          // exactIntent should be a single piece.
-          if (!needToDistinguish) {
-            exactIntent = c;
-          } else {
-            if (c.pos[distinguishType == "file" ? 0 : 1] == pieceDistinguish) {
-              exactIntent = c;
+        if (possibleIntents.length == 0) {
+          alert("Which piece do you want to move?");
+        } else {
+          // needToDistinguish determines whether or not special notation is *needed*
+          // to tell which piece moves where. If possibleIntents has more than one
+          // value, there is a need to distinguish. See FIDE C.10 for more info.
+          var needToDistinguish = (possibleIntents.length > 1 ? true : false);
+    
+          // pieceDistinguish enables notation that can distinguish between
+          // two or more pieces of the same type moving to a tile. For
+          // example, the notation Nbd7 means that there's another knight
+          // that can move to d7, but the player wants to move the knight
+          // in file b.
+          var pieceDistinguish = null;
+          if (needToDistinguish) {
+            // For example, gxh3 and Nbd7
+            pieceDistinguish = (pieceToMove == "p" ? input[0] : input[1]); 
+            // Determine if pieceDistinguish is a file or a rank.
+            if (pieceDistinguish.match(/[a-h]/)) {
+              var distinguishType = "file";
+            } else if (pieceDistinguish.match(/[1-8]/)) {
+              var distinguishType = "rank";
             }
           }
-        }
+    
+          console.log(possibleIntents);
 
-        if (exactIntent) {
-          if (willCapture) {
-            gameScope.captureLog.log(m.turn, moveIntent);
+          // Cycle through possibleIntents and determine which is the pieceIntent.
+          for (var i = 0; i < possibleIntents.length; i++) {
+            var c = possibleIntents[i];
+            // exactIntent should be a single piece.
+            if (!needToDistinguish) {
+              exactIntent = c;
+            } else {
+              if (c.pos[distinguishType == "file" ? 0 : 1] == pieceDistinguish) {
+                exactIntent = c;
+              }
+            }
           }
-          exactIntent.changePos(moveIntent);
-          gameScope.logMoveAndSwitchTurn(input);
-        } else {
-          alert("Move unsuccessful.");
-          console.log("Move unsuccessful:");
+
+          if (exactIntent) {
+            if (willCapture) {
+              gameScope.captureLog.log(m.turn, moveIntent);
+            }
+            exactIntent.changePos(moveIntent);
+            gameScope.logMoveAndSwitchTurn(input);
+          } else {
+            alert("Move unsuccessful.");
+            console.log("Move unsuccessful:");
+          }
         }
         console.log("\tinput: " + input + "\n");
         console.log("\tmoveIntent: " + moveIntent + "\n");
         console.log("\tpieceToMove: " + pieceToMove + "\n");
+        console.log("\tpieceClassName: " + pieceClassName + "\n");
         console.log("\twillCapture: " + willCapture + "\n");
         console.log("\tneedToDistinguish: " + needToDistinguish + "\n");
         console.log("\tpieceDistinguish: " + pieceDistinguish + "\n");
