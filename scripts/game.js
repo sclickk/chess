@@ -297,29 +297,25 @@ function Game() {
         }
   
         console.log(possibleIntents);
-  
+
         // Cycle through possibleIntents and determine which is the pieceIntent.
         for (var i = 0; i < possibleIntents.length; i++) {
           var c = possibleIntents[i];
+          // exactIntent should be a single piece.
           if (!needToDistinguish) {
-            var pieceIntent = c;
+            exactIntent = c;
           } else {
             if (c.pos[distinguishType == "file" ? 0 : 1] == pieceDistinguish) {
-              var pieceIntent = c;
+              exactIntent = c;
             }
           }
         }
 
-        // pieceIntent should be a single piece.
         if (exactIntent) {
           if (willCapture) {
             gameScope.captureLog.log(m.turn, moveIntent);
           }
-          pieceIntent.changePos(moveIntent);
-          moveSuccessful = true;
-        }
-
-        if (moveSuccessful) {
+          exactIntent.changePos(moveIntent);
           gameScope.logMoveAndSwitchTurn(input);
         } else {
           alert("Move unsuccessful.");
