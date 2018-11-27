@@ -3,6 +3,8 @@ function ChessBoard(boardHTML) {
   this.tiles = new Array();
   // Stores the 32 Piece()s.
   this.pieces = new Array();
+  // Shows the guides at the top and sides of the board.
+  this.guides = new Guide();
   this.boardHTML = document.getElementById(boardHTML);
   this.getRank = function (rank) {
   }
