@@ -36,7 +36,7 @@ function Pawn(pos, color) {
       if (t.get(this.pos[0] + (this.pos[1] - -1)) == "") {
         range = range.concat(this.pos[0] + (this.pos[1] - -1));
       }
-      if (this.pos[1] == "2") { // All white pawns start in the 2nd rank
+      if (this.hasMoved == false) { // A pawn can move two pieces ahead on their first move.
         // Make sure the tile is empty.
         if (t.get(this.pos[0] + (this.pos[1] - -2)) == "") {
           range = range.concat(this.pos[0] + (this.pos[1] - -2));
@@ -49,7 +49,7 @@ function Pawn(pos, color) {
         range = range.concat(this.pos[0] + (this.pos[1] - 1));
       }
       range = range.concat(this.pos[0] + (this.pos[1] - 1));
-      if (this.pos[1] == "7") { // All black pawns start in the 7th rank
+      if (this.hasMoved == false) { // A pawn can move two pieces ahead on their first move.
         // Make sure the tile is empty.
         if (t.get(this.pos[0] + (this.pos[1] - 2)) == "") {
           range = range.concat(this.pos[0] + (this.pos[1] - 2));
