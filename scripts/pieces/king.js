@@ -6,9 +6,8 @@ function King(pos, color) {
   this.isDead = this.p.isDead;
   this.rangeOfMovement = this.p.rangeOfMovement;
   this.hasMoved = this.p.hasMoved;
-  
-
   this.changePos = this.p.changePos;
+
   /*
    * The king has the simplest range of movement: one move in any
    * direction. Like any other piece, it can't move *itself* to any
