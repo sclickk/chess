@@ -18,7 +18,7 @@ function Game() {
   this.start = function () {
     this.userInput = new UserInput();
     this.captureLog = new CaptureLog();
-    this.gameBoard = new Board("board");
+    this.chessBoard = new Board("board");
     document.getElementById("gameInteraction").style = "display: block;";
     this.gameSettings = new Settings();
     this.gameSettings.showSettingsButton();
@@ -26,9 +26,9 @@ function Game() {
     var guides = new Guide();
     guides.create();
     guides.show();
-    this.gameBoard.create();
-    this.gameBoard.clear(); // We don't want extra pieces laying around.
-    this.gameBoard.fill();
+    this.chessBoard.create();
+    this.chessBoard.clear(); // We don't want extra pieces laying around.
+    this.chessBoard.fill();
     m.clearMoveLog(); // Clear the move log from the last game.
     m.resetTurn(); // Reset who's turn it is.
     this.captureLog.clear(); // Clear the log of what pieces where captured.
@@ -42,7 +42,7 @@ function Game() {
     var opposingKing;
 
     // Sets opposingKing;
-    for (var i = 0; i < this.gameBoard.pieces.length; i++) {
+    for (var i = 0; i < this.chessBoard.pieces.length; i++) {
       // In PHP, C, bash, etc., I use "c" to save myself some
       // typing within loops.
       //
@@ -53,7 +53,7 @@ function Game() {
       // }
       //
       // btw, "c" stands for "case".
-      var c = this.gameBoard.pieces[i];
+      var c = this.chessBoard.pieces[i];
       if (c.constructor.name == "King") {
         if (c.color != m.turn) {
           opposingKing = c;
@@ -61,8 +61,8 @@ function Game() {
       }
     }
 
-    for (var i = 0; i < this.gameBoard.pieces.length; i++) {
-      var c = this.gameBoard.pieces[i];
+    for (var i = 0; i < this.chessBoard.pieces.length; i++) {
+      var c = this.chessBoard.pieces[i];
       if (c.constructor.name != "King") {
         /*
          * If any of your opposing player's pieces has your king within their
@@ -138,8 +138,8 @@ function Game() {
       if (t.get("b" + rankToCheck) == ""
        && t.get("c" + rankToCheck) == ""
        && t.get("d" + rankToCheck) == "") {
-        for (var i = 0; i < gameScope.gameBoard.pieces.length; i++) {
-          var c = gameScope.gameBoard.pieces[i];
+        for (var i = 0; i < gameScope.chessBoard.pieces.length; i++) {
+          var c = gameScope.chessBoard.pieces[i];
           if (c.color == m.turn) {
             if (c.constructor.name == "King") {
               if (c.pos == ("e" + rankToCheck)) {
@@ -165,8 +165,8 @@ function Game() {
     } else if (side == "king") {
       if (t.get("f" + rankToCheck) == ""
        && t.get("g" + rankToCheck) == "") {
-        for (var i = 0; i < gameScope.gameBoard.pieces.length; i++) {
-          var c = gameScope.gameBoard.pieces[i];
+        for (var i = 0; i < gameScope.chessBoard.pieces.length; i++) {
+          var c = gameScope.chessBoard.pieces[i];
           if (c.color == m.turn) {
             if (c.constructor.name == "King") {
               if (c.pos == ("e" + rankToCheck)) {
@@ -232,7 +232,7 @@ function Game() {
         if (t.get("b" + rankToCheck) == ""
          && t.get("c" + rankToCheck) == ""
          && t.get("d" + rankToCheck) == "") {
-          for (var i = 0; i < gameScope.gameBoard.pieces.length; i++) {
+          for (var i = 0; i < gameScope.chessBoard.pieces.length; i++) {
             // In PHP, C, bash, etc., I use "c" to save myself some
             // typing within loops.
             //
@@ -243,7 +243,7 @@ function Game() {
             // }
             //
             // btw, "c" stands for "case".
-            var c = gameScope.gameBoard.pieces[i];
+            var c = gameScope.chessBoard.pieces[i];
             if (c.color == m.turn) {
               if (c.constructor.name == "King") {
                 if (c.pos == ("e" + rankToCheck)) {
@@ -269,8 +269,8 @@ function Game() {
       } else if (input.match(/O-O|0-0/)) {
         if (t.get("f" + rankToCheck) == ""
          && t.get("g" + rankToCheck) == "") {
-          for (var i = 0; i < gameScope.gameBoard.pieces.length; i++) {
-            var c = gameScope.gameBoard.pieces[i];
+          for (var i = 0; i < gameScope.chessBoard.pieces.length; i++) {
+            var c = gameScope.chessBoard.pieces[i];
             if (c.color == m.turn) {
               if (c.constructor.name == "King") {
                 if (c.pos == ("e" + rankToCheck)) {
@@ -332,8 +332,8 @@ function Game() {
     // If the piece meets all of the above, it's added to possibleIntents.
     var possibleIntents = new Array();
     // Cycle through *every* piece on the board.
-    for (var i = 0; i < gameScope.gameBoard.pieces.length; i++) {
-      var c = gameScope.gameBoard.pieces[i];
+    for (var i = 0; i < gameScope.chessBoard.pieces.length; i++) {
+      var c = gameScope.chessBoard.pieces[i];
       // Make sure the piece is on the player's color.
       if (c.color == m.turn) {
         // Make sure this piece is of the type the player knows it is.
