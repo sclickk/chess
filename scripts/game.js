@@ -221,7 +221,6 @@ function Game() {
   
       // Sets to true when we can pass a given move as valid.
       var moveSuccessful = false;
-      var validMove = false;
 
       if (this.willCastle(input)) {
         var rankToCheck = (m.turn == "W" ? "1" : "8");
