@@ -1,0 +1,85 @@
+body {
+  font-family: "Menlo", "Monaco", "Consolas", monospace;
+  margin: 37px;
+}
+
+#gameInteraction span,
+#userInput,
+#moveButton,
+#promotePawnTo,
+#newGame,
+header,
+hr {
+  display: none !important;
+}
+
+input, select, button {
+  font-family: "Menlo", "Monaco", "Consolas", monospace;
+  font-size: 20px;
+  padding: 1px 5px;
+}
+
+table {
+  border-spacing: 0px;
+}
+
+/* Set for all tables to be safe. */
+tr td {
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.tile {
+  border: 1px solid #000;
+  color: #000;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  font-size: 220%;
+  line-height: 38px;
+}
+
+main {
+  cursor: default;
+}
+
+main table tr {
+  color: #000;
+  text-align: center;
+}
+
+#side-guide tr td,
+#top-guide td {
+  font-weight: bold;
+  margin: 0px;
+  border: 1px solid #000;
+}
+
+#side-guide tr td {
+  width: 12px;
+  height: 40px;
+}
+
+#top-guide td {
+  width: 40px;
+  height: 12px;
+}
+
+.sidebar {
+  font-size: 20px;
+  padding: 5px;
+}
+
+@media print {
+  #settings,
+  #settingsButton {
+    display: none !important;
+  }
+  .sidebar {
+    float: right;
+    width: 40%;
+  }
+}

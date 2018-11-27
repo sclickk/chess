@@ -1,0 +1,84 @@
+body {
+  font-family: "Google Sans", "Roboto", "Noto Sans", sans-serif;
+  background-color: #fff;
+  color: #000;
+}
+
+main {
+  padding-left: auto;
+  padding-right: auto;
+}
+
+button {
+  font-family: "Roboto", "Noto Sans", sans-serif;
+  color: #FFF;
+  background-color: #6683FF;
+  text-transform: uppercase;
+  padding: 5px 8px 5px 8px;
+}
+
+button, input {
+  border-radius: 5px;
+  border: 0px;
+}
+
+input:active {
+  border-bottom: 1px solid #6683FF;
+}
+
+hr {
+  border: 1px solid #ddd;
+}
+
+.tile {
+  color: #000;
+  height: 70px;
+  width: 70px;
+  padding: 0px;
+  margin: 0px;
+  border: 1px solid #000000;
+  text-align: center;
+  font-size: 400%;
+  line-height: 60px;
+}
+
+#side-guide tr td,
+#top-guide td {
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #000000;
+}
+
+#side-guide tr td {
+  width: 20px;
+  height: 70px;
+  line-height: 60px;
+}
+
+#top-guide td {
+  width: 68px;
+  height: 20px;
+  line-height: 20px;
+}
+
+.sidebar {
+  float: right;
+}
+
+#whiteCaptured,
+#blackCaptured {
+  font-size: 30px;
+  margin: 0px;
+}
+
+/* Checkerboard the table */
+.row .tile {
+  background-color: #fff;
+}
+
+.row:nth-child(even) .tile:nth-child(odd), 
+.row:nth-child(odd) .tile:nth-child(even) {
+  background-color: #ddd;
+}

@@ -1,0 +1,148 @@
+body {
+  background-color: #ffe;
+  color: #552;
+  font-family: "Rockwell", "Segoe UI", "Roboto", "Helvetica", sans-serif;
+  margin: 37px;
+}
+
+input, select, button {
+  font-family: "Rockwell", "Segoe UI", "Roboto", "Helvetica", sans-serif;
+  background-color: #ffe;
+  color: #552;
+  font-size: 20px;
+  border: 1px solid #552;
+  padding: 1px 5px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #552;
+  padding: 0px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+table {
+  border-spacing: 0px;
+}
+
+/* Set for all tables to be safe. */
+tr td {
+  padding: 0;
+  border: 0;
+}
+
+.tile {
+  color: #000;
+  height: 70px;
+  width: 70px;
+  text-shadow: 2px 0px 5px #7f7f7f;
+  text-align: center;
+  font-size: 400%;
+  line-height: 68px;
+}
+
+main {
+  cursor: default;
+}
+
+main table tr {
+  color: #ffe;
+  background-color: #552;
+  text-align: center;
+}
+
+#side-guide tr td,
+#top-guide td {
+  font-weight: bold;
+  margin: 0px;
+}
+
+#side-guide tr td {
+  width: 20px;
+  height: 70px;
+}
+
+#top-guide td {
+  width: 70px;
+  height: 20px;
+}
+
+.sidebar {
+  border-left: 1px solid #552;
+  font-size: 20px;
+  padding: 5px;
+  width: 35%;
+  float: right;
+}
+
+#whiteCaptured,
+#blackCaptured {
+  font-size: 30px;
+  margin: 0px;
+}
+
+/* Checkerboard the table */
+.row .tile {
+  background-color: #efb;
+}
+
+.row:nth-child(even) .tile:nth-child(odd), 
+.row:nth-child(odd) .tile:nth-child(even) {
+  background-color: #cd9;
+}
+
+#miniKeyboard div {
+  margin-bottom: 5px;
+}
+
+#miniKeyboard div button {
+  font-size: 30px;
+  padding: 2px 7px;
+}
+
+#miniKeyboard div button:active {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Responsive board sizes */
+@media (min-width: 700px) and (max-width: 1100px) {
+  body {
+    margin-top: 10px;
+    font-size: 80%;
+  }
+  header {
+    display: none;
+  }
+  .tile {
+    font-size: 300%;
+    height: 50px;
+    width: 50px;
+    line-height: 48px;
+  }
+  #side-guide tr td {
+    width: 12px;
+    height: 50px;
+  }
+  #top-guide td {
+    width: 50px;
+    height: 12px;
+    line-height: 12px;
+  }
+  .sidebar {
+    font-size: 14px;
+    width: 40%;
+  }
+  input, select, button {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1100px) and (max-width: 1300px) {
+  .sidebar {
+    width: 30%;
+  }
+}

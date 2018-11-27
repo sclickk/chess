@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Chess</title>
+    <link type="text/css" id="themeCSS" rel="stylesheet" href="./themes/default.css"/>
+  </head>
+  <body id="app">
+    <div class="sidebar">
+      <button id="newGame">New Game</button>
+      <button id="settingsButton" style="display: none;">Show Settings</button>
+      <div id="settings" style="display: none;">
+        <hr/>
+        <div>
+          <span>Theme: </span>
+          <select id="themeSelector">
+          </select>
+        </div>
+        <div>
+          <input type="checkbox" checked id="showCoordinates">
+          <span>Show coordinate guides</span>
+        </div>
+        <div>
+          <input type="checkbox" id="overrideFonts">
+          <span>Override theme fonts (use this setting if the Unicode pieces are not displaying properly)</span>
+        </div>
+        <div>
+          <input type="checkbox" id="showMiniKeyboard">
+          <span>Show mini game keyboard (for touchscreens)</span>
+        </div>
+      </div>
+      <div id="gameInteraction" style="display: none;">
+        <hr/>
+        <ol id="movesList">
+        </ol>
+        <hr/>
+        <span id="turnStatus">White:</span>
+        <input type="text" id="userInput"/>
+        <button id="moveButton">Make Move</button>
+        <hr/>
+        <span>Promote pawn to:</span>
+        <select id="promotePawnTo">
+          <option>Queen</option>
+          <option>Rook</option>
+          <option>Bishop</option>
+          <option>Knight</option>
+        </select>
+        <div id="miniKeyboard" style="display: none;">
+          <hr/>
+          <div>
+            <button>Q</button>
+            <button>K</button>
+            <button>R</button>
+            <button>B</button>
+            <button>N</button>
+            <button>x</button>
+          </div>
+          <div>
+            <button>a</button>
+            <button>b</button>
+            <button>c</button>
+            <button>d</button>
+            <button>e</button>
+            <button>f</button>
+            <button>g</button>
+            <button>h</button>
+          </div>
+          <div>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+          </div>
+          <div>
+            <button>O-O</button>
+            <button>O-O-O</button>
+          </div>
+        </div>
+        <hr/>
+        <p id="whiteCaptured">⚐: </p>
+        <p id="blackCaptured">⚑: </p>
+      </div>
+    </div>
+    <header>
+      <h1 id="title">Chess</h1>
+    </header>
+    <main>
+      <!-- Most of the HTML below is already generated for us. -->
+      <table>
+        <tr>
+          <td></td>
+          <td>
+            <table>
+              <tbody>
+                <tr id="top-guide" style="display: none;">
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table>
+              <tbody id="side-guide" style="display: none;">
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table>
+              <tbody id="board">
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </main>
+    <!-- Utilities (the guides at the side of the board and number-lettter conversion). -->
+    <script type="text/javascript" src="scripts/utils.js"></script>
+    <script type="text/javascript" src="scripts/guide.js"></script>
+    <!-- Game settings and custom themes -->
+    <script type="text/javascript" src="scripts/settings.js"></script>
+    <script type="text/javascript" src="./themes.js"></script>
+    <!-- Manages individual tiles. -->
+    <script type="text/javascript" src="scripts/tile.js"></script>
+    <!-- Manages the whole board of tiles. -->
+    <script type="text/javascript" src="scripts/board.js"></script>
+    <!-- Manages the user input form. -->
+    <script type="text/javascript" src="scripts/user-input.js"></script>
+    <!-- Manages the capture log. -->
+    <script type="text/javascript" src="scripts/capture-log.js"></script>
+    <!-- Manages the move log. -->
+    <script type="text/javascript" src="scripts/moves.js"></script>
+    <!-- Manages the standard behavior of pieces. -->
+    <script type="text/javascript" src="scripts/pieces/piece.js"></script>
+    <!-- Classes that extend off of Piece(). -->
+    <script type="text/javascript" src="scripts/pieces/rook.js"></script>
+    <script type="text/javascript" src="scripts/pieces/king.js"></script>
+    <script type="text/javascript" src="scripts/pieces/bishop.js"></script>
+    <script type="text/javascript" src="scripts/pieces/queen.js"></script>
+    <script type="text/javascript" src="scripts/pieces/knight.js"></script>
+    <script type="text/javascript" src="scripts/pieces/pawn.js"></script>
+    <!-- The main Game() class. -->
+    <script type="text/javascript" src="scripts/game.js"></script>
+    <script type="text/javascript" src="scripts/debug/debug.js"></script>
+  <script type="text/javascript">
+// Handle the creation of a new game
+document.getElementById("newGame").onclick = newGame;
+function newGame() {
+  var g = new Game();
+  g.start();
+}
+// That's it!
+    </script>
+  </body>
+</html>

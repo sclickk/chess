@@ -1,0 +1,27 @@
+c6
+c8=Q+
+c8=Q#
+Bf7
+exc6
+exc6=
+exc8=Q#
+Bxc6
+Bxc6+
+Bxc6#
+Nbd7
+
+(Q|B|N|R|[a-h])*x*[a-h][1-8](=(Q|B|N|R|))*(\+|\#|)
+((x|)[a-h][1-8](\=(Q|B|N|R)(\+|\#)|)|)
+
+Valid file: [a-h]
+Valid rank: [1-8]
+Valid piece to move
+Capture: x
+
+Valid check/checkmate: (\+|\#)
+x
+xxx
+xxxxx
+
+The definitive notation of what a valid chess move is:
+(Q|K|B|N|R|)(([a-h]|)|([a-h]|)x|)[a-h][1-9](\=(Q|B|N|R)|)(\+|\#|)

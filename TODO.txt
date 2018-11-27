@@ -1,0 +1,17 @@
+* Change this code for the bishop, because toLetter doesn't work right here:
+  // We make a dummy array with all the tiles.
+  var tiles = new Array();
+  for (var i = 1; i < 9; i++) {
+    for (var j = 1; j < 9; j++) {
+      tiles = tiles.concat(toLetter(j) + i);
+    }
+  }
+
+
+  DEBUG, TOO.
+
+
+Sun, Nov. 25: Add way to determine checkmate.
+Mon, Nov. 26: Add a way to make sure the king is protected when the player moves after being checked.
+Tue, Nov. 27: Add a way to promote pawns.
+Wed, Nov. 28: Add the mini keyboard.
