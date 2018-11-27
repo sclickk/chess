@@ -286,42 +286,39 @@ function Game() {
         // in file b.
         var pieceDistinguish = null;
         if (needToDistinguish) {
-          if (pieceToMove == "p") {
-            // For example, gxh3 and Nbd7
-            pieceDistinguish = (pieceToMove == "p" ? input[0] : input[1]); 
-          }
+          // For example, gxh3 and Nbd7
+          pieceDistinguish = (pieceToMove == "p" ? input[0] : input[1]); 
           // Determine if pieceDistinguish is a file or a rank.
-          if (pieceDistinguish != null) {
-            if (pieceDistinguish.match(/[a-h]/)) {
-              var distinguishType = "file";
-            } else if (pieceDistinguish.match(/[1-8]/)) {
-              var distinguishType = "rank";
-            }
+          if (pieceDistinguish.match(/[a-h]/)) {
+            var distinguishType = "file";
+          } else if (pieceDistinguish.match(/[1-8]/)) {
+            var distinguishType = "rank";
           }
         }
   
         console.log(possibleIntents);
   
-        if (!this.badInput(input)) {
-          for (var i = 0; i < possibleIntents.length; i++) {
-            var c = possibleIntents[i];
-            if (!needToDistinguish) {
-              if (willCapture) {
-                gameScope.captureLog.log(m.turn, moveIntent);
-              }
-              c.changePos(moveIntent);
-              moveSuccessful = true;
-            } else {
-              if (c.pos[distinguishType == "file" ? 0 : 1] == pieceDistinguish) {
-                if (willCapture) {
-                  gameScope.captureLog.log(m.turn, moveIntent);
-                }
-                c.changePos(moveIntent);
-                moveSuccessful = true;
-              }
+        // Cycle through possibleIntents and determine which is the pieceIntent.
+        for (var i = 0; i < possibleIntents.length; i++) {
+          var c = possibleIntents[i];
+          if (!needToDistinguish) {
+            var pieceIntent = c;
+          } else {
+            if (c.pos[distinguishType == "file" ? 0 : 1] == pieceDistinguish) {
+              var pieceIntent = c;
             }
           }
         }
+
+        // pieceIntent should be a single piece.
+        if (exactIntent) {
+          if (willCapture) {
+            gameScope.captureLog.log(m.turn, moveIntent);
+          }
+          pieceIntent.changePos(moveIntent);
+          moveSuccessful = true;
+        }
+
         if (moveSuccessful) {
           gameScope.logMoveAndSwitchTurn(input);
         } else {
