@@ -46,4 +46,11 @@ function Settings() {
       }
     }
   }
+
+  this.showMiniKeyboard = document.getElementById("showMiniKeyboard");
+  this.showMiniKeyboard.onchange = function () {
+    var miniKeyboard = document.getElementById("miniKeyboard"),
+        option = settingsScope.showMiniKeyboard;
+    miniKeyboard.style = "display: " + (option.checked ? "block;" : "none;");
+  }
 }

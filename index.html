@@ -24,6 +24,10 @@
           <input type="checkbox" id="overrideFonts">
           <span>Override theme fonts (use this setting if the Unicode pieces are not displaying properly)</span>
         </div>
+        <div>
+          <input type="checkbox" id="showMiniKeyboard">
+          <span>Show the mini keyboard (for touchscreens)</span>
+        </div>
       </div>
       <div id="gameInteraction" style="display: none;">
         <hr/>
@@ -41,6 +45,9 @@
           <option>Bishop</option>
           <option>Knight</option>
         </select>
+        <!-- The mini keyboard below is generated for us. -->
+        <div id="miniKeyboard" style="display: none;">
+        </div>
         <hr/>
         <p id="whiteCaptured">⚐: </p>
         <p id="blackCaptured">⚑: </p>
