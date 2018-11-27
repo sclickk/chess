@@ -155,7 +155,7 @@ function Game() {
       for (var i = 0; i < gameScope.chessBoard.pieces.length; i++) {
         var c = gameScope.chessBoard.pieces[i];
         if (c.color == m.turn) {
-          if (!c.isDead) {
+          if (!c.isDead()) {
             if (c.timesMoved == 0) {
               if (side == "queen") {
                 if (c.constructor.name == "King") {
