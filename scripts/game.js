@@ -186,7 +186,7 @@ function Game() {
         }
       }
     } else {
-      alert("Clear the area between the rook and the king.");
+      alert("You need to clear the area between the rook and the king.");
     }
 
     if (moveSuccessful) {
