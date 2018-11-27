@@ -6,6 +6,4 @@ function UserInput() {
   this.clear = function () {
     this.userInputHTML.value = "";
   }
-  this.miniKeyboard = document.getElementById("miniKeyboard");
-  
 }
