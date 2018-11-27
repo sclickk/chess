@@ -5,6 +5,7 @@ function Bishop(pos, color) {
   this.pos = this.p.pos;
   this.isDead = this.p.isDead;
   this.rangeOfMovement = this.p.rangeOfMovement;
+  this.hasMoved = this.p.hasMoved;
   this.changePos = this.p.changePos;
   
   // Bishops can move diagonally forwards or backwards. Because of this Bishops

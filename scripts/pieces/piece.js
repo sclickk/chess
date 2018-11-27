@@ -22,6 +22,12 @@ function Piece(pos, char) {
     this.rangeOfMovement = new Array();
   }
 
+  /*
+   * This manages instances whereby a rule depends on whether on not a piece
+   * has moved, such as castling.
+   */
+  this.hasMoved = false;
+
   t.set(this.pos, this.char);
 
   /*
@@ -38,5 +44,6 @@ function Piece(pos, char) {
     t.set(this.pos, "");
     this.pos = newPos;
     t.set(newPos, this.char);
+    this.hasMoved = true;
   }
 }

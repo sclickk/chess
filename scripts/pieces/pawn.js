@@ -5,6 +5,7 @@ function Pawn(pos, color) {
   this.pos = this.p.pos;
   this.isDead = this.p.isDead;
   this.rangeOfMovement = this.p.rangeOfMovement;
+  this.hasMoved = this.p.hasMoved;
   this.changePos = this.p.changePos;
 
   // Pawns can seem simple but are quite quirky pieces. Pawns can move either
