@@ -199,29 +199,6 @@ function Game() {
    */
   this.performMove = function (input) {
     if (!this.badInput(input)) {
-      // pieceToMove is the piece that the player intends to move by the next move.
-      var pieceToMove = (input[0].match(/(Q|K|R|B|N)/) ? input[0] : "p");
-  
-      // With pieceClassName, we can use piece.constructor.name in order to
-      // easily determine what class the piece is inherited from. It's one of the
-      // weirdest features in JavaScript, and it probably isn't best programming
-      // practice, but why not?
-      var pieceClassName = "";
-      switch (pieceToMove) {
-        case "Q": pieceClassName = "Queen"; break;
-        case "K": pieceClassName = "King"; break;
-        case "R": pieceClassName = "Rook"; break;
-        case "B": pieceClassName = "Bishop"; break;
-        case "N": pieceClassName = "Knight"; break;
-        case "p": pieceClassName = "Pawn"; break;
-      }
-  
-      // Sets to true when the player checks their opponent
-      var checkedOpposingPlayer = false;
-  
-      // Sets to true when we can pass a given move as valid.
-      var moveSuccessful = false;
-
       if (this.willCastle(input)) {
         // Look for "O-O-O" first to prevent accidental matching on "O-O".
         // "O-O-O" (or 0-0-0) is to castle on the queen side.
@@ -232,6 +209,28 @@ function Game() {
           this.performCastle("king", input);
         }
       } else {
+        // pieceToMove is the piece that the player intends to move by the next move.
+        var pieceToMove = (input[0].match(/(Q|K|R|B|N)/) ? input[0] : "p");
+    
+        // With pieceClassName, we can use piece.constructor.name in order to
+        // easily determine what class the piece is inherited from. It's one of the
+        // weirdest features in JavaScript, and it probably isn't best programming
+        // practice, but why not?
+        var pieceClassName = "";
+        switch (pieceToMove) {
+          case "Q": pieceClassName = "Queen"; break;
+          case "K": pieceClassName = "King"; break;
+          case "R": pieceClassName = "Rook"; break;
+          case "B": pieceClassName = "Bishop"; break;
+          case "N": pieceClassName = "Knight"; break;
+          case "p": pieceClassName = "Pawn"; break;
+        }
+    
+        // Sets to true when the player checks their opponent
+        var checkedOpposingPlayer = false;
+    
+        // Sets to true when we can pass a given move as valid.
+        var moveSuccessful = false;
         // willCapture is a boolean that determines whether or not the pieceToMove
         // will make a capture on this move.
         var willCapture = input.match(/x/) ? true : false;
