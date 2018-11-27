@@ -230,9 +230,7 @@ function Game() {
           case "N": pieceClassName = "Knight"; break;
           case "p": pieceClassName = "Pawn"; break;
         }
-    
-        // Sets to true when we can pass a given move as valid.
-        var moveSuccessful = false;
+
         // willCapture is a boolean that determines whether or not the pieceToMove
         // will make a capture on this move. Based on FIDE C.9
         var willCapture = input.match(/x/) ? true : false;
