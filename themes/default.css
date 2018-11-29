@@ -94,6 +94,14 @@ main table tr {
   background-color: #cd9;
 }
 
+/* Mini keyboard */
+#miniKeyboard button {
+  padding: 5px;
+  font-size: 30px;
+  line-height: 30px;
+  margin: 5px;
+}
+
 /* Responsive board sizes */
 @media (min-width: 700px) and (max-width: 1100px) {
   body {
