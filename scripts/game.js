@@ -217,7 +217,7 @@ function Game() {
 
         // pieceToMove is the type of piece that the player intends to move.
         // Based on FIDE C.1, C.2, and C.4
-        var pieceToMove = (input[0].match(/(Q|K|R|B|N)/) ? input[0] : "p");
+        var pieceToMove = (input[0].match(/[QKRBN]?/) ? input[0] : "p");
 
         // willCapture is a boolean that determines whether or not the pieceToMove
         // will make a capture on this move. Based on FIDE C.9
