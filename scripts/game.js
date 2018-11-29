@@ -118,7 +118,7 @@ function Game() {
     if (!this.badInput(input)) {
       // O-O and O-O-O is notation for castling. This also includes 0-0 and
       // 0-0-0 in case the player confuses O with 0 (zero)
-      return input.match(/(O-O(-O|)|0-0(-0|))/) ? true : false;
+      return input.match(/(O-O(-O)?|0-0(-0)?)/) ? true : false;
     } else {
       return false;
     }
@@ -217,7 +217,7 @@ function Game() {
 
         // pieceToMove is the type of piece that the player intends to move.
         // Based on FIDE C.1, C.2, and C.4
-        var pieceToMove = (input[0].match(/[QKRBN]?/) ? input[0] : "p");
+        var pieceToMove = (input[0].match(/[QKRBN]/) ? input[0] : "p");
 
         // willCapture is a boolean that determines whether or not the pieceToMove
         // will make a capture on this move. Based on FIDE C.9
