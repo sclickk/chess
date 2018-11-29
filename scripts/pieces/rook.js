@@ -7,7 +7,7 @@ function Rook(pos, color) {
   this.rangeOfMovement = this.p.rangeOfMovement;
   this.timesMoved = this.p.timesMoved;
   this.changePos = this.p.changePos;
-  
+
   /*
    * Rooks generally move in a straight line vertically or
    * horizontally. However, rooks can not jump over other pieces.

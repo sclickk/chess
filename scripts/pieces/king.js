@@ -35,7 +35,7 @@ function King(pos, color) {
         }
       }
     }
-    
+
     return range;
   }
 }

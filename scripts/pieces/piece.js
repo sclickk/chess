@@ -53,7 +53,7 @@ function Piece(pos, char) {
    * the same colour. If a piece moves to a square occupied by an opponent’s
    * piece the latter is captured and removed from the chessboard as part of
    * the same move.
-   * 
+   *
    * TL;DR No piece can capture it's own pieces.
    */
   // TODO: Fill up this function

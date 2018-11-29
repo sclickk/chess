@@ -29,7 +29,7 @@ function ChessBoard(boardHTML) {
     // Don't create a second chessboard if it's already there.
     if (!this.exists(this.boardHTML)) {
       // HTML works with tables as cells within rows, so we first, create all
-      // the rows ("ranks") on the board, then we can add a tile to the 
+      // the rows ("ranks") on the board, then we can add a tile to the
       for (var i = 8; i > 0; i--) {
         this.boardHTML.innerHTML += "<tr class=\"row\" id=\"" + i + "\"></tr>\n";
         for (var j = 1; j < 9; j++) {

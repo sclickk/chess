@@ -73,7 +73,7 @@ hr {
   background-color: #fff;
 }
 
-.row:nth-child(even) .tile:nth-child(odd), 
+.row:nth-child(even) .tile:nth-child(odd),
 .row:nth-child(odd) .tile:nth-child(even) {
   background-color: #ddd;
 }

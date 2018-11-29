@@ -29,7 +29,7 @@ function UserInput() {
       this.miniKeyboard.innerHTML += "<br/>";
     }
   }
-  
+
   this.miniKeyboard.onclick = function () {
     var c = userInputScope.userInputHTML;
     if (event.srcElement.className == "mk-key") {

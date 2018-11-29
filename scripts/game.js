@@ -221,7 +221,7 @@ function Game() {
         // willCapture is a boolean that determines whether or not the pieceToMove
         // will make a capture on this move. Based on FIDE C.9
         var willCapture = input.match(/x/) ? true : false;
-  
+
         // moveIntent is the tile the player wants pieceToMove to change to.
         var moveIntent = "";
         // Here we set moveIntent.
@@ -232,7 +232,7 @@ function Game() {
         } else {
           moveIntent = input.substr(input.length - 2, 2);
         }
-  
+
         // possibleIntents makes it more efficient to see what piece the player
         // might "want" to move. With the loop below, we add every piece that is:
         // * On the current player's color.
@@ -280,7 +280,7 @@ function Game() {
           // to tell which piece moves where. If possibleIntents has more than one
           // value, there is a need to distinguish. See FIDE C.10 for more info.
           var needToDistinguish = (possibleIntents.length > 1 ? true : false);
-    
+
           // pieceDistinguish enables notation that can distinguish between
           // two or more pieces of the same type moving to a tile. For
           // example, the notation Nbd7 means that there's another knight
@@ -289,7 +289,7 @@ function Game() {
           var pieceDistinguish = null;
           if (needToDistinguish) {
             // For example, gxh3 and Nbd7
-            pieceDistinguish = (pieceToMove == "p" ? input[0] : input[1]); 
+            pieceDistinguish = (pieceToMove == "p" ? input[0] : input[1]);
             // Determine if pieceDistinguish is a file or a rank.
             if (pieceDistinguish.match(/[a-h]/)) {
               var distinguishType = "file";
@@ -297,7 +297,7 @@ function Game() {
               var distinguishType = "rank";
             }
           }
-    
+
           console.log(possibleIntents);
 
           // Cycle through possibleIntents and determine which is the pieceIntent.
@@ -373,7 +373,7 @@ function Game() {
   document.getElementById("moveButton").onclick = function () {
     gameScope.performMove(gameScope.userInput.get());
   }
-  
+
   document.getElementById("userInput").onkeydown = function () {
     var key = event.keyCode;
     // Do the same thing when the enter key is pressed.

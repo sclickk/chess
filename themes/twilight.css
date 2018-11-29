@@ -55,7 +55,7 @@ main {
   background-color: #d6d;
 }
 
-.row:nth-child(even) .tile:nth-child(odd), 
+.row:nth-child(even) .tile:nth-child(odd),
 .row:nth-child(odd) .tile:nth-child(even) {
   background-color: #c4c;
 }

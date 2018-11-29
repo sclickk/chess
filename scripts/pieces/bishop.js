@@ -7,7 +7,7 @@ function Bishop(pos, color) {
   this.rangeOfMovement = this.p.rangeOfMovement;
   this.timesMoved = this.p.timesMoved;
   this.changePos = this.p.changePos;
-  
+
   // Bishops can move diagonally forwards or backwards. Because of this Bishops
   // can only move on tiles that are the same color as where they started. For
   // example, checking a king with only a bishop is near pointless, since the
@@ -82,7 +82,7 @@ function Bishop(pos, color) {
         }
       }
     }
-    
+
     return range;
   }
 }
