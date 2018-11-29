@@ -17,6 +17,7 @@ function Game() {
    */
   this.start = function () {
     this.userInput = new UserInput();
+    this.userInput.createMiniKeyboard();
     this.captureLog = new CaptureLog();
     this.chessBoard = new ChessBoard("board");
     document.getElementById("gameInteraction").style = "display: block;";
