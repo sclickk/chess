@@ -12,8 +12,7 @@ function CaptureLog() {
    * Log a piece being captured by a player.
    */
   this.log = function (turn, piece) {
-    var captureHTML, t = new Tile();
     captureHTML = (turn == "W" ? this.whiteCapturedHTML : this.blackCapturedHTML);
-    captureHTML.innerHTML += t.get(piece);
+    captureHTML.innerHTML += piece;
   }
 }

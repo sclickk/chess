@@ -18,7 +18,7 @@ function Game() {
   this.start = function () {
     this.userInput = new UserInput();
     this.userInput.createMiniKeyboard();
-    this.captureLog = new CaptureLog();
+    
     this.chessBoard = new ChessBoard("board");
     document.getElementById("gameInteraction").style = "display: block;";
     this.gameSettings = new Settings();
@@ -31,6 +31,7 @@ function Game() {
     this.chessBoard.fill();
     m.clearMoveLog(); // Clear the move log from the last game.
     m.resetTurn(); // Reset who's turn it is.
+    this.captureLog = new CaptureLog();
     this.captureLog.clear(); // Clear the log of what pieces where captured.
   }
 
@@ -315,7 +316,7 @@ function Game() {
 
           if (exactIntent) {
             if (willCapture) {
-              gameScope.captureLog.log(m.turn, moveIntent);
+              gameScope.captureLog.log(m.turn, t.get(moveIntent));
             }
             exactIntent.changePos(moveIntent);
             gameScope.logMoveAndSwitchTurn(input);
