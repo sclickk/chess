@@ -7,15 +7,29 @@
  * ||+ p                     -- Instance of the Piece class
  * |||- pos                  -- Property of Piece
  */
-function Game() {
-  // This becomes important later on.
-  var gameScope = this;
-  var m = new Moves(),
-      t = new Tile();
+class Game {
+  /**
+   * Create a new instance of the Game() class.
+   */
+  constructor() {
+    this.t = new Tile();
+    this.moveLog = new Moves();
+    document.getElementById("moveButton").addEventListener("click", (event) => {
+      this.performMove(this.userInput.get());
+    });
+  
+    document.getElementById("userInput").addEventListener("keydown", (event) => {
+      var key = event.keyCode;  
+      // Do the same thing when the enter key is pressed.
+      if (key == 13) {
+        this.performMove(this.userInput.get());
+      }
+    });
+  }
   /*
    * This get's called once the player clicks on "New Game".
    */
-  this.start = function () {
+  start() {
     this.userInput = new UserInput();
     this.userInput.createMiniKeyboard();
     
@@ -29,8 +43,8 @@ function Game() {
     this.chessBoard.create();
     this.chessBoard.clear(); // We don't want extra pieces laying around.
     this.chessBoard.fill();
-    m.clearMoveLog(); // Clear the move log from the last game.
-    m.resetTurn(); // Reset who's turn it is.
+    this.moveLog.clearMoveLog(); // Clear the move log from the last game.
+    this.moveLog.resetTurn(); // Reset who's turn it is.
     this.captureLog = new CaptureLog();
     this.captureLog.clear(); // Clear the log of what pieces where captured.
   }
@@ -38,7 +52,7 @@ function Game() {
   /*
    * Determine if either player is in check.
    */
-  this.checkedOpposingPlayer = function () {
+  checkedOpposingPlayer() {
     var opposingKing;
 
     // Sets opposingKing;
@@ -55,7 +69,7 @@ function Game() {
       // btw, "c" stands for "case".
       var c = this.chessBoard.pieces[i];
       if (c.constructor.name == "King") {
-        if (c.color != m.turn) {
+        if (c.color != this.moveLog.turn) {
           opposingKing = c;
         }
       }
@@ -68,7 +82,7 @@ function Game() {
          * If any of your opposing player's pieces has your king within their
          * range of attack, your king is in check.
          */
-        if (c.color == m.turn) {
+        if (c.color == this.moveLog.turn) {
           if (c.getRangeOfMovement().indexOf(opposingKing.pos) != -1) {
             if (!c.isDead()) {
               console.log(c);
@@ -85,7 +99,7 @@ function Game() {
   /*
    * Determine if an input is too long, too short, or if there is no input.
    */
-  this.badInput = function (input) {
+  badInput(input) {
     if (input.length > 7) {
       return true;
     } else if (input.length < 2) {
@@ -98,23 +112,23 @@ function Game() {
   /*
    * Log a move and switch the the current turn.
    */
-  this.logMoveAndSwitchTurn = function (input) {
+  logMoveAndSwitchTurn(input) {
     console.log("Move successful:");
     if (this.checkedOpposingPlayer()) {
-      m.logCheck(input);
-      m.turn == "W" ? m.blackChecked = true : m.whiteChecked = true;
+      this.moveLog.logCheck(input);
+      this.moveLog.turn == "W" ? this.moveLog.blackChecked = true : this.moveLog.whiteChecked = true;
     } else {
-      m.logMove(input);
-      m.turn == "W" ? m.blackChecked = false : m.whiteChecked = false;
+      this.moveLog.logMove(input);
+      this.moveLog.turn == "W" ? this.moveLog.blackChecked = false : this.moveLog.whiteChecked = false;
     }
     this.userInput.clear();
-    m.switchTurn();
+    this.moveLog.switchTurn();
   }
 
   /*
    * Determine if the player will castle based on a given input.
    */
-  this.willCastle = function (input) {
+  willCastle(input) {
     if (!this.badInput(input)) {
       // O-O and O-O-O is notation for castling. This also includes 0-0 and
       // 0-0-0 in case the player confuses O with 0 (zero)
@@ -128,9 +142,9 @@ function Game() {
    * Perform a "castling" of the king. This moves the king to position that
    * protects it behind the rook and a row of pawns.
    */
-  this.performCastle = function (side, input) {
+  performCastle(side, input) {
     // The row where the king and the rook should be.
-    var rankToCheck = (m.turn == "W" ? "1" : "8");
+    var rankToCheck = (this.moveLog.turn == "W" ? "1" : "8");
     // Stores the tiles that need to be empty in order to rook.
     var spaceNeeded;
     console.log(rankToCheck);
@@ -148,15 +162,15 @@ function Game() {
     var allSpacesEmpty = true;
     for (var i = 0; i < spaceNeeded.length; i++) {
       var c = spaceNeeded[i];
-      if (t.get(c) != "") {
+      if (this.t.get(c) != "") {
         allSpacesEmpty = false;
       }
     }
 
     if (allSpacesEmpty) {
-      for (var i = 0; i < gameScope.chessBoard.pieces.length; i++) {
-        var c = gameScope.chessBoard.pieces[i];
-        if (c.color == m.turn) {
+      for (var i = 0; i < this.chessBoard.pieces.length; i++) {
+        var c = this.chessBoard.pieces[i];
+        if (c.color == this.moveLog.turn) {
           if (!c.isDead()) {
             if (c.timesMoved == 0) {
               if (side == "queen") {
@@ -199,7 +213,7 @@ function Game() {
   /*
    * Move a piece based on the given input.
    */
-  this.performMove = function (input) {
+  performMove(input) {
     if (!this.badInput(input)) {
       if (this.willCastle(input)) {
         // Look for "O-O-O" first to prevent accidental matching on "O-O".
@@ -244,12 +258,12 @@ function Game() {
         // If the piece meets all of the above, it's added to possibleIntents.
         var possibleIntents = new Array();
         // Cycle through *every* piece on the board.
-        for (var i = 0; i < gameScope.chessBoard.pieces.length; i++) {
-          var c = gameScope.chessBoard.pieces[i];
+        for (var i = 0; i < this.chessBoard.pieces.length; i++) {
+          var c = this.chessBoard.pieces[i];
           // Make sure the piece is on the player's color.
-          if (c.color == m.turn) {
+          if (c.color == this.moveLog.turn) {
             // With pieceClassName, we can use piece.constructor.name in order to
-            // easily determine what class the piece is inherited from. It's one of the
+            // easily determine what class the piece is inherited frothis.moveLog. It's one of the
             // weirdest features in JavaScript, and it probably isn't best programming
             // practice, but why not?
             var pieceClassName = "";
@@ -301,6 +315,7 @@ function Game() {
 
           console.log(possibleIntents);
 
+          var exactIntent;
           // Cycle through possibleIntents and determine which is the pieceIntent.
           for (var i = 0; i < possibleIntents.length; i++) {
             var c = possibleIntents[i];
@@ -316,10 +331,10 @@ function Game() {
 
           if (exactIntent) {
             if (willCapture) {
-              gameScope.captureLog.log(m.turn, t.get(moveIntent));
+              this.captureLog.log(this.moveLog.turn, this.t.get(moveIntent));
             }
             exactIntent.changePos(moveIntent);
-            gameScope.logMoveAndSwitchTurn(input);
+            this.logMoveAndSwitchTurn(input);
           } else {
             alert("Move unsuccessful.");
             console.log("Move unsuccessful:");
@@ -339,47 +354,4 @@ function Game() {
     }
   }
 
-  // Getting this to work was very tricky especially for the third bullet, and it's
-  // part of the reason I don't like JavaScript too much:
-  // * This function is the event handler for moveButton()
-  // * This needed to be inside of Game() because it shouldn't detect
-  //   user input until the game starts.
-  // * I needed this function to be able to access the functions and properties
-  //   of the pieces declared above.
-  //
-  // This question on Stack Overflow helped:
-  // https://stackoverflow.com/questions/12731528/adding-event-listeners-in-constructor
-  //
-  // I first used this code:
-  //
-  // document.getElementById("moveButton").onclick = function () {
-  //   alert(this.WK.pos);
-  // }
-  //
-  // It should have alerted "e1" but nothing happened because it thought that
-  // "this" meant the current function (getElementById("moveButton").onclick),
-  // and not the scope of this Game(constructor)
-  //
-  // The variable gameScope declared above is set to that way when we type
-  // gameScope.WK.pos we are intending to point to the Game() constructor.
-  //
-  // Another odd thing to point out is the difference between event handlers
-  // and regular functions when it comes to inheritance. Notice how above the
-  // variables this.BRa, this.WQ, etc. are all defined in the scope of Game
-  // despite being in the this.fillBoard() function. You would expect all the
-  // pieces to be accessed with this.fillBoard.piece.
-  //
-  // TL;DR JavaScript inheritance is weird.
-  //
-  document.getElementById("moveButton").onclick = function () {
-    gameScope.performMove(gameScope.userInput.get());
-  }
-
-  document.getElementById("userInput").onkeydown = function () {
-    var key = event.keyCode;
-    // Do the same thing when the enter key is pressed.
-    if (key == 13) {
-      gameScope.performMove(gameScope.userInput.get());
-    }
-  }
 }
