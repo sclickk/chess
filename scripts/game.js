@@ -210,6 +210,23 @@ class Game {
     }
   }
 
+  // With pieceClassName(), we can use piece.constructor.name in order to
+  // easily determine what class the piece is inherited frothis.moveLog. It's one of the
+  // weirdest features in JavaScript, and it probably isn't best programming
+  // practice, but why not?
+  pieceClassName(piece) {
+    var pieceClassName = "";
+    switch (piece) {
+      case "Q": pieceClassName = "Queen"; break;
+      case "K": pieceClassName = "King"; break;
+      case "R": pieceClassName = "Rook"; break;
+      case "B": pieceClassName = "Bishop"; break;
+      case "N": pieceClassName = "Knight"; break;
+      case "p": pieceClassName = "Pawn"; break;
+    }
+    return pieceClassName
+  }
+
   /*
    * Move a piece based on the given input.
    */
@@ -262,21 +279,8 @@ class Game {
           var c = this.chessBoard.pieces[i];
           // Make sure the piece is on the player's color.
           if (c.color == this.moveLog.turn) {
-            // With pieceClassName, we can use piece.constructor.name in order to
-            // easily determine what class the piece is inherited frothis.moveLog. It's one of the
-            // weirdest features in JavaScript, and it probably isn't best programming
-            // practice, but why not?
-            var pieceClassName = "";
-            switch (pieceToMove) {
-              case "Q": pieceClassName = "Queen"; break;
-              case "K": pieceClassName = "King"; break;
-              case "R": pieceClassName = "Rook"; break;
-              case "B": pieceClassName = "Bishop"; break;
-              case "N": pieceClassName = "Knight"; break;
-              case "p": pieceClassName = "Pawn"; break;
-            }
             // Make sure this piece is of the type the player knows it is.
-            if (c.constructor.name == pieceClassName) {
+            if (c.constructor.name == this.pieceClassName(pieceToMove)) {
               // Make sure the piece isn't dead.
               if (!c.isDead()) {
                 // Make sure this piece can move to where the player want's it to.
