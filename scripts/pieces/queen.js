@@ -1,13 +1,14 @@
-function Queen(pos, color) {
-  this.p = new Piece(pos, color == "W" ? "♕" : "♛");
-  this.color = this.p.color;
-  this.char = this.p.char;
-  this.pos = this.p.pos;
-  this.isDead = this.p.isDead;
-  this.rangeOfMovement = this.p.rangeOfMovement;
-  this.timesMoved = this.p.timesMoved;
-  this.changePos = this.p.changePos;
-
+class Queen {
+  constructor(pos, color) {
+    this.p = new Piece(pos, color == "W" ? "♕" : "♛");
+    this.color = this.p.color;
+    this.char = this.p.char;
+    this.pos = this.p.pos;
+    this.isDead = this.p.isDead;
+    this.rangeOfMovement = this.p.rangeOfMovement;
+    this.timesMoved = this.p.timesMoved;
+    this.changePos = this.p.changePos;
+  }
   /*
    * The queen is by far the most powerful piece on the board. It
    * can move any number of pieces in a straight line horizontally,
@@ -16,12 +17,11 @@ function Queen(pos, color) {
    * This code is straight up stolen from the rook and the bishop. For
    * more info on how this works, look there.
    */
-  this.getRangeOfMovement = function () {
+  getRangeOfMovement() {
     var range = new Array();
     var tiles = new Array();
     var t = new Tile();
     var oppositeColor = (this.color == "W" ? "B" : "W");
-
     // Add every piece to the left of the rook.
     for (var i = toNumber(this.pos[0]); i >= 0; i--) {
       var c = toLetter(0 - -i) + this.pos[1];
@@ -30,9 +30,11 @@ function Queen(pos, color) {
           if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = -100;
-          } else if (t.getPieceColor(t.get(c)) == this.color) {
+          }
+          else if (t.getPieceColor(t.get(c)) == this.color) {
             i = -100;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
@@ -46,9 +48,11 @@ function Queen(pos, color) {
           if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = 100;
-          } else if (t.getPieceColor(t.get(c)) == this.color) {
+          }
+          else if (t.getPieceColor(t.get(c)) == this.color) {
             i = 100;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
@@ -62,9 +66,11 @@ function Queen(pos, color) {
           if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = -100;
-          } else if (t.getPieceColor(t.get(c)) == this.color) {
+          }
+          else if (t.getPieceColor(t.get(c)) == this.color) {
             i = -100;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
@@ -78,15 +84,16 @@ function Queen(pos, color) {
           if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = 100;
-          } else if (t.getPieceColor(t.get(c)) == this.color) {
+          }
+          else if (t.getPieceColor(t.get(c)) == this.color) {
             i = 100;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
       }
     }
-
     // Add every tile to the up-right of the bishop.
     for (var i = 0; i <= 8; i++) {
       var c = toLetter(toNumber(this.pos[0]) - -i) + (this.pos[1] - -(i));
@@ -94,10 +101,12 @@ function Queen(pos, color) {
         if (c != this.pos) {
           if (t.getPieceColor(t.get(c)) == this.color) {
             i = 10;
-          } else if (t.getPieceColor(t.get(c)) == oppositeColor) {
+          }
+          else if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = 10;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
@@ -110,10 +119,12 @@ function Queen(pos, color) {
         if (c != this.pos) {
           if (t.getPieceColor(t.get(c)) == this.color) {
             i = 10;
-          } else if (t.getPieceColor(t.get(c)) == oppositeColor) {
+          }
+          else if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = 10;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
@@ -126,10 +137,12 @@ function Queen(pos, color) {
         if (c != this.pos) {
           if (t.getPieceColor(t.get(c)) == this.color) {
             i = 10;
-          } else if (t.getPieceColor(t.get(c)) == oppositeColor) {
+          }
+          else if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = 10;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
@@ -142,16 +155,17 @@ function Queen(pos, color) {
         if (c != this.pos) {
           if (t.getPieceColor(t.get(c)) == this.color) {
             i = 10;
-          } else if (t.getPieceColor(t.get(c)) == oppositeColor) {
+          }
+          else if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = 10;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
       }
     }
-
     return range;
-  }
+  };
 }

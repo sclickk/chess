@@ -1,23 +1,22 @@
-function Bishop(pos, color) {
-  this.p = new Piece(pos, color == "W" ? "♗" : "♝");
-  this.color = this.p.color;
-  this.char = this.p.char;
-  this.pos = this.p.pos;
-  this.isDead = this.p.isDead;
-  this.rangeOfMovement = this.p.rangeOfMovement;
-  this.timesMoved = this.p.timesMoved;
-  this.changePos = this.p.changePos;
 
+class Bishop {
+  constructor(pos, color) {
+    this.p = new Piece(pos, color == "W" ? "♗" : "♝");
+    this.color = this.p.color;
+    this.char = this.p.char;
+    this.pos = this.p.pos;
+    this.isDead = this.p.isDead;
+    this.rangeOfMovement = this.p.rangeOfMovement;
+    this.timesMoved = this.p.timesMoved;
+    this.changePos = this.p.changePos;
+  }
   // Bishops can move diagonally forwards or backwards. Because of this Bishops
   // can only move on tiles that are the same color as where they started. For
   // example, checking a king with only a bishop is near pointless, since the
   // king can easily defend itself by moving to vertically or horizonally to
   // another square.
-  this.getRangeOfMovement = function () {
-    var range = new Array(),
-        t = new Tile(),
-        oppositeColor = (this.color == "W" ? "B" : "W");
-
+  getRangeOfMovement() {
+    var range = new Array(), t = new Tile(), oppositeColor = (this.color == "W" ? "B" : "W");
     // Add every tile to the up-right of the bishop.
     for (var i = 0; i <= 8; i++) {
       var c = toLetter(toNumber(this.pos[0]) - -i) + (this.pos[1] - -(i));
@@ -25,10 +24,12 @@ function Bishop(pos, color) {
         if (c != this.pos) {
           if (t.getPieceColor(t.get(c)) == this.color) {
             i = 10;
-          } else if (t.getPieceColor(t.get(c)) == oppositeColor) {
+          }
+          else if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = 10;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
@@ -41,10 +42,12 @@ function Bishop(pos, color) {
         if (c != this.pos) {
           if (t.getPieceColor(t.get(c)) == this.color) {
             i = 10;
-          } else if (t.getPieceColor(t.get(c)) == oppositeColor) {
+          }
+          else if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = 10;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
@@ -57,10 +60,12 @@ function Bishop(pos, color) {
         if (c != this.pos) {
           if (t.getPieceColor(t.get(c)) == this.color) {
             i = 10;
-          } else if (t.getPieceColor(t.get(c)) == oppositeColor) {
+          }
+          else if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = 10;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
@@ -73,16 +78,17 @@ function Bishop(pos, color) {
         if (c != this.pos) {
           if (t.getPieceColor(t.get(c)) == this.color) {
             i = 10;
-          } else if (t.getPieceColor(t.get(c)) == oppositeColor) {
+          }
+          else if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = 10;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
       }
     }
-
     return range;
-  }
+  };
 }

@@ -1,12 +1,14 @@
-function Pawn(pos, color) {
-  this.p = new Piece(pos, color == "W" ? "♙" : "♟");
-  this.color = this.p.color;
-  this.char = this.p.char;
-  this.pos = this.p.pos;
-  this.isDead = this.p.isDead;
-  this.rangeOfMovement = this.p.rangeOfMovement;
-  this.timesMoved = this.p.timesMoved;
-  this.changePos = this.p.changePos;
+class Pawn {
+  constructor(pos, color) {
+    this.p = new Piece(pos, color == "W" ? "♙" : "♟");
+    this.color = this.p.color;
+    this.char = this.p.char;
+    this.pos = this.p.pos;
+    this.isDead = this.p.isDead;
+    this.rangeOfMovement = this.p.rangeOfMovement;
+    this.timesMoved = this.p.timesMoved;
+    this.changePos = this.p.changePos;
+  }
 
   // Pawns can seem simple but are quite quirky pieces. Pawns can move either
   // one or two pieces ahead on their first move. When one player moves two
@@ -14,7 +16,7 @@ function Pawn(pos, color) {
   // or right it, they can play a special move called *en passant*, where the
   // opposing player can capture the pawn and move to the position where
   // it is as if though they had only moved their pawn once.
-  this.getRangeOfMovement = function () {
+  getRangeOfMovement() {
     var range = new Array(),
         t = new Tile();
     // This array holds tiles where the pawn is able to capture another piece.
@@ -73,6 +75,6 @@ function Pawn(pos, color) {
    * Pawns are the only piece in the game that can be promoted to another
    * type of piece.
    */
-  this.promote = function (piece) {
+  promote(piece) {
   }
 }

@@ -1,18 +1,20 @@
-function Knight(pos, color) {
-  this.p = new Piece(pos, color == "W" ? "♘" : "♞");
-  this.color = this.p.color;
-  this.char = this.p.char;
-  this.pos = this.p.pos;
-  this.isDead = this.p.isDead;
-  this.rangeOfMovement = this.p.rangeOfMovement;
-  this.timesMoved = this.p.timesMoved;
-  this.changePos = this.p.changePos;
+class Knight {
+  constructor(pos, color) {
+    this.p = new Piece(pos, color == "W" ? "♘" : "♞");
+    this.color = this.p.color;
+    this.char = this.p.char;
+    this.pos = this.p.pos;
+    this.isDead = this.p.isDead;
+    this.rangeOfMovement = this.p.rangeOfMovement;
+    this.timesMoved = this.p.timesMoved;
+    this.changePos = this.p.changePos;
+  }
 
   // Knights can move 2 tiles in any direction, then another tile adjacent to it.
   //
   // In this picture, the white knight can move on any of the green squares:
   // https://qph.fs.quoracdn.net/main-qimg-556ae5342fd31a53cdd43c81208056bb
-  this.getRangeOfMovement = function () {
+  getRangeOfMovement() {
     var range = new Array();
     var tilesPreset = new Array();
     /*

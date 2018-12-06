@@ -1,23 +1,23 @@
-function Rook(pos, color) {
-  this.p = new Piece(pos, color == "W" ? "♖" : "♜");
-  this.color = this.p.color;
-  this.char = this.p.char;
-  this.pos = this.p.pos;
-  this.isDead = this.p.isDead;
-  this.rangeOfMovement = this.p.rangeOfMovement;
-  this.timesMoved = this.p.timesMoved;
-  this.changePos = this.p.changePos;
-
+class Rook {
+  constructor(pos, color) {
+    this.p = new Piece(pos, color == "W" ? "♖" : "♜");
+    this.color = this.p.color;
+    this.char = this.p.char;
+    this.pos = this.p.pos;
+    this.isDead = this.p.isDead;
+    this.rangeOfMovement = this.p.rangeOfMovement;
+    this.timesMoved = this.p.timesMoved;
+    this.changePos = this.p.changePos;
+  }
   /*
    * Rooks generally move in a straight line vertically or
    * horizontally. However, rooks can not jump over other pieces.
    * Rooks have the simplest range of movement algorithmically.
    */
-  this.getRangeOfMovement = function () {
+  getRangeOfMovement() {
     var range = new Array();
     var t = new Tile();
     var oppositeColor = (this.color == "W" ? "B" : "W");
-
     // Add every tile to the left of the rook.
     for (var i = toNumber(this.pos[0]); i >= 0; i--) {
       var c = toLetter(0 - -i) + this.pos[1];
@@ -36,9 +36,11 @@ function Rook(pos, color) {
           if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = -100;
-          } else if (t.getPieceColor(t.get(c)) == this.color) {
+          }
+          else if (t.getPieceColor(t.get(c)) == this.color) {
             i = -100;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
@@ -52,9 +54,11 @@ function Rook(pos, color) {
           if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = 100;
-          } else if (t.getPieceColor(t.get(c)) == this.color) {
+          }
+          else if (t.getPieceColor(t.get(c)) == this.color) {
             i = 100;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
@@ -68,9 +72,11 @@ function Rook(pos, color) {
           if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = -100;
-          } else if (t.getPieceColor(t.get(c)) == this.color) {
+          }
+          else if (t.getPieceColor(t.get(c)) == this.color) {
             i = -100;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
@@ -84,14 +90,16 @@ function Rook(pos, color) {
           if (t.getPieceColor(t.get(c)) == oppositeColor) {
             range = range.concat(c);
             i = 100;
-          } else if (t.getPieceColor(t.get(c)) == this.color) {
+          }
+          else if (t.getPieceColor(t.get(c)) == this.color) {
             i = 100;
-          } else {
+          }
+          else {
             range = range.concat(c);
           }
         }
       }
     }
     return range;
-  }
+  };
 }
