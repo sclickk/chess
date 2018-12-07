@@ -224,7 +224,7 @@ class Game {
       case "N": pieceClassName = "Knight"; break;
       case "p": pieceClassName = "Pawn"; break;
     }
-    return pieceClassName
+    return pieceClassName;
   }
 
   /*
@@ -347,7 +347,6 @@ class Game {
         console.log("\tinput: " + input + "\n");
         console.log("\tmoveIntent: " + moveIntent + "\n");
         console.log("\tpieceToMove: " + pieceToMove + "\n");
-        console.log("\tpieceClassName: " + pieceClassName + "\n");
         console.log("\twillCapture: " + willCapture + "\n");
         console.log("\tneedToDistinguish: " + needToDistinguish + "\n");
         console.log("\tpieceDistinguish: " + pieceDistinguish + "\n");
