@@ -7,10 +7,7 @@
 var themes = [
   ["Default", "./themes/default.css"],
   ["Printable", "./themes/printable.css"],
-  ["Modern", "./themes/modern.css"],
   ["Mustangs", "./themes/mustangs.css"],
   ["iChess", "./themes/ichess.css"],
   ["Google Chess", "./themes/gchess.css"],
-  ["Bro", "./themes/bro.css"],
-  ["RWBY", "./themes/rwby.css"],
 ];
