@@ -120,11 +120,10 @@
     <script type="text/javascript" src="scripts/debug/debug.js"></script>
   <script type="text/javascript">
 // Handle the creation of a new game
-document.getElementById("newGame").onclick = newGame;
-function newGame() {
+$('#newGame').on('click', function (event) {
   var g = new Game();
   g.start();
-}
+});
 // That's it!
     </script>
   </body>
