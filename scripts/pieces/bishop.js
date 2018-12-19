@@ -1,14 +1,6 @@
-
-class Bishop {
+class Bishop extends Piece {
   constructor(pos, color) {
-    this.p = new Piece(pos, color == "W" ? "♗" : "♝");
-    this.color = this.p.color;
-    this.char = this.p.char;
-    this.pos = this.p.pos;
-    this.isDead = this.p.isDead;
-    this.rangeOfMovement = this.p.rangeOfMovement;
-    this.timesMoved = this.p.timesMoved;
-    this.changePos = this.p.changePos;
+    super(pos, color == "W" ? "♗" : "♝");
   }
   // Bishops can move diagonally forwards or backwards. Because of this Bishops
   // can only move on tiles that are the same color as where they started. For
