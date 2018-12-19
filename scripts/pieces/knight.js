@@ -22,7 +22,6 @@ class Knight {
      * variables to 2 and 1, respectively. Then we make a loop that iterates
      * twice. After the first iteration, the variables are switched to 1 and 2,
      * respectively, switching the directions around. The first
-     *
      */
     var vert = 2;
     var hor = 1;
