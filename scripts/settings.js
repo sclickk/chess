@@ -26,14 +26,13 @@ function Settings() {
     option.checked ? guideToggle.show() : guideToggle.hide();
   }
 
-  this.overrideFonts = document.getElementById("overrideFonts");
-  this.overrideFonts.onclick = function () {
-    var body = document.getElementsByTagName("body")[0],
-      option = settingsScope.overrideFonts;
-    body.style = (option.checked ? "font-family: sans-serif;" : "");
-  }
+  $('#overrideFonts').on('click', function (event) {
+    $('body').css(
+      "font-family", this.checked ? "sans-serif" : ""
+    );
+  });
 
-  this.themeSelector = document.getElementById("themeSelector");
+  this.themeSelector = $("#themeSelector")[0];
   for (var i = 0; i < themes.length; i++) {
     this.themeSelector.innerHTML += "<option>" + themes[i][0] + "</option>";
   }
