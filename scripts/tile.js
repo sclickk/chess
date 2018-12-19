@@ -35,7 +35,7 @@ function Tile(pos) {
      * Returns the piece currently on a tile.
      */
     this.get = function (tile) {
-      return this.exists(tile) ? document.getElementById(tile).innerHTML : "";
+      return this.exists(tile) ? $('#' + tile).text() : "";
     }
 
     /*
