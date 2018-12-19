@@ -1,4 +1,3 @@
-
 class King {
   constructor(pos, color) {
     this.p = new Piece(pos, color == "W" ? "♔" : "♚");
