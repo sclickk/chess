@@ -1,5 +1,4 @@
-
-/*
+/**
  * Manages the guides at the top and sides of the board. The guides show the
  * coordinates of every tile on the board.
  */
@@ -9,6 +8,9 @@ class Guide {
     this.topGuide = $('#top-guide')[0];
     this.sideGuide = $('#side-guide')[0];
   }
+  /**
+   * Check if the HTML for the guides exist.
+   */
   exists() {
     if (this.topGuide.getAttribute("created")
      && this.sideGuide.getAttribute("created")) {
@@ -17,6 +19,9 @@ class Guide {
       return false;
     }
   }
+  /**
+   * Create the HTML for the guides.
+   */
   create() {
     if (!this.exists()) {
       for (var i = 1; i < 9; i++) {
@@ -31,10 +36,16 @@ class Guide {
       console.warn("The guides already exist.");
     }
   }
+  /**
+   * Show the guides with CSS
+   */
   show() {
     this.topGuide.style = "display: table-row;";
     this.sideGuide.style = "display: table-row;";
   }
+  /**
+   * Hide the guides with CSS.
+   */
   hide() {
     this.topGuide.style = "display: none;";
     this.sideGuide.style = "display: none;";
