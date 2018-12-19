@@ -28,7 +28,7 @@ function Tile(pos) {
      * Change the piece that's on a tile.
      */
     this.set = function (tile, piece) {
-      document.getElementById(tile).innerHTML = piece;
+      $('#' + tile).text(piece);
     }
 
     /*
