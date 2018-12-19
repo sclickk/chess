@@ -1,4 +1,4 @@
-var fileLetters = ["a", "b", "c", "d", "e", "f", "g", "h"];
+var fileLetters = "abcdefgh";
 
 /*
  * This function converts the letters used to denote files into
