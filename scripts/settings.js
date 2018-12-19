@@ -27,30 +27,35 @@ function Settings() {
   }
 
   $('#overrideFonts').on('click', function (event) {
-    $('body').css(
-      "font-family", this.checked ? "sans-serif" : ""
-    );
+    $('body').css("font-family", this.checked ? "sans-serif" : "");
   });
 
-  this.themeSelector = $("#themeSelector")[0];
+  /**
+   * Set up the theme selector
+   */
+  this.themeSelector = $('#themeSelector');
+
   for (var i = 0; i < themes.length; i++) {
-    this.themeSelector.innerHTML += "<option>" + themes[i][0] + "</option>";
+    this.themeSelector.append('<option>' + themes[i][0] + '</option>');
   }
-  this.themeSelector.onchange = function () {
-    var selectedTheme = settingsScope.themeSelector.value;
+
+  this.themeSelector.on('change', function () {
+    var selectedTheme = this.value;
     for (var i = 0; i < themes.length; i++) {
       var c = themes[i];
       if (c[0] == selectedTheme) {
-        document.getElementById("themeCSS").href = c[1];
+        $('#themeCSS').attr('href', c[1]);
       }
     }
-  }
+  });
 
+  /**
+   * Set up the mini keyboard.
+   */
   this.showMiniKeyboard = $('#showMiniKeyboard')[0];
-  this.showMiniKeyboard.onchange = function () {
-    var option = settingsScope.showMiniKeyboard;
+  $('#showMiniKeyboard').on('change', function () {
     $('#miniKeyboard').css(
-      'display', (option.checked ? "block" : "none")
+      'display', (this.checked ? "block" : "none")
     );
-  }
+  });
 }
