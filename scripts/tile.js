@@ -14,11 +14,11 @@ function Tile(pos) {
     }
   }
   if (pos != undefined) {
-    if (document.getElementById(this.pos)) {
+    if ($("#" + this.pos)[0]) {
       console.log("hi");
-      document.getElementById(this.pos).onclick = function () {
+      $("#" + this.pos)[0].onclick = function () {
         this.pos = pos;
-        document.getElementById(this.pos).style = "border: 1px solid #f00;";
+        $("#" + this.pos)[0].style = "border: 1px solid #f00;";
         console.log("created border at " + this.pos);
       }
     }
