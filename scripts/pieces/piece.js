@@ -18,7 +18,7 @@ function Piece(pos, char) {
       console.warn("A piece's position can't be " + pos);
     }
     this.char = char;
-    this.color = t.getPieceColor(this.char);
+    this.color = Tile.getPieceColor(this.char);
     this.rangeOfMovement = new Array();
   }
 
@@ -28,13 +28,13 @@ function Piece(pos, char) {
    */
   this.timesMoved = 0;
 
-  t.set(this.pos, this.char);
+  Tile.set(this.pos, this.char);
 
   /*
    * Returns a boolean that determines whether or not the piece is captured.
    */
   this.isDead = function () {
-    return t.get(this.pos) != this.char ? true : false;
+    return Tile.get(this.pos) != this.char ? true : false;
   }
 
   /**
@@ -43,11 +43,11 @@ function Piece(pos, char) {
    */
   this.changePos = function (newPos) {
     // Empty the "square of departure".
-    t.set(this.pos, "");
+    Tile.set(this.pos, "");
     // Change the pos variable.
     this.pos = newPos;
     // Place the piece on the "square of arrival".
-    t.set(newPos, this.char);
+    Tile.set(newPos, this.char);
     // Increment timesMoved.
     this.timesMoved++;
   }

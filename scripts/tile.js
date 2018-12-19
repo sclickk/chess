@@ -7,14 +7,14 @@ class Tile {
   /*
    * Change the piece that's on a tile.
    */
-  set(tile, piece) {
+  static set(tile, piece) {
     $('#' + tile).text(piece);
   }
 
   /*
    * Returns the piece currently on a tile.
    */
-  get(tile) {
+  static get(tile) {
     return this.exists(tile) ? $('#' + tile).text() : "";
   }
 
@@ -23,7 +23,7 @@ class Tile {
    * You ask "What player owns the piece on tile [a3, e4, etc.]?" and it
    * returns "W", "B", or "E" (empty).
    */
-  getPieceColor(tile) {
+  static getPieceColor(tile) {
     if (tile.match(/[♙♖♘♗♕♔]/)) {
       return "W";
     } else if (tile.match(/[♟♜♞♝♛♚]/)) {
@@ -37,7 +37,7 @@ class Tile {
    * Determine whether or not a given notation is valid for a
    * position on the board.
    */
-  exists(tile) {
+  static exists(tile) {
     // Regular expressions let us match coordinate notation more easily.
     if (tile.length == 2 && tile.match(/[a-h][1-8]/)) {
       return true;

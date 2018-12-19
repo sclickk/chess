@@ -159,7 +159,7 @@ class Game {
     var allSpacesEmpty = true;
     for (var i = 0; i < spaceNeeded.length; i++) {
       var c = spaceNeeded[i];
-      if (this.t.get(c) != "") {
+      if (Tile.get(c) != "") {
         allSpacesEmpty = false;
       }
     }
@@ -332,7 +332,7 @@ class Game {
 
           if (exactIntent) {
             if (willCapture) {
-              this.captureLog.log(this.moveLog.turn, this.t.get(moveIntent));
+              this.captureLog.log(this.moveLog.turn, Tile.get(moveIntent));
             }
             exactIntent.changePos(moveIntent);
             this.logMoveAndSwitchTurn(input);

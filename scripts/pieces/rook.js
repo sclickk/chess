@@ -17,7 +17,7 @@ Rook.prototype.getRangeOfMovement = function () {
   for (var i = toNumber(this.pos[0]); i >= 0; i--) {
     var c = toLetter(0 - -i) + this.pos[1];
     // Make sure the tile actually exists.
-    if (t.exists(c)) {
+    if (Tile.exists(c)) {
       // Don't add the current position of the rook.
       if (c != this.pos) {
         // When it evaluates the next tile, one of the following
@@ -28,11 +28,11 @@ Rook.prototype.getRangeOfMovement = function () {
         //     * Add the tile and break the loop.
         //   * If it's color is the same of this piece:
         //     * Break the loop.
-        if (t.getPieceColor(t.get(c)) == oppositeColor) {
+        if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = -100;
         }
-        else if (t.getPieceColor(t.get(c)) == this.color) {
+        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = -100;
         }
         else {
@@ -44,13 +44,13 @@ Rook.prototype.getRangeOfMovement = function () {
   // Add every tile to the right of the rook.
   for (var i = toNumber(this.pos[0]); i <= 8; i++) {
     var c = toLetter(0 - -i) + this.pos[1];
-    if (t.exists(c)) {
+    if (Tile.exists(c)) {
       if (c != this.pos) {
-        if (t.getPieceColor(t.get(c)) == oppositeColor) {
+        if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 100;
         }
-        else if (t.getPieceColor(t.get(c)) == this.color) {
+        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 100;
         }
         else {
@@ -62,13 +62,13 @@ Rook.prototype.getRangeOfMovement = function () {
   // Add every tile below the rook.
   for (var i = this.pos[1]; i >= 0; i--) {
     var c = this.pos[0] + (0 - -i);
-    if (t.exists(c)) {
+    if (Tile.exists(c)) {
       if (c != this.pos) {
-        if (t.getPieceColor(t.get(c)) == oppositeColor) {
+        if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = -100;
         }
-        else if (t.getPieceColor(t.get(c)) == this.color) {
+        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = -100;
         }
         else {
@@ -80,13 +80,13 @@ Rook.prototype.getRangeOfMovement = function () {
   // Add every tile above the rook.
   for (var i = this.pos[1]; i <= 8; i++) {
     var c = this.pos[0] + (0 - -i);
-    if (t.exists(c)) {
+    if (Tile.exists(c)) {
       if (c != this.pos) {
-        if (t.getPieceColor(t.get(c)) == oppositeColor) {
+        if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 100;
         }
-        else if (t.getPieceColor(t.get(c)) == this.color) {
+        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 100;
         }
         else {

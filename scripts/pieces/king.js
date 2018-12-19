@@ -23,9 +23,9 @@ King.prototype.getRangeOfMovement = function () {
   ];
   var t = new Tile();
   for (var i = 0; i < tilesPreset.length; i++) {
-    if (t.exists(tilesPreset[i])) {
+    if (Tile.exists(tilesPreset[i])) {
       // This applies to both empty tiles as well.
-      if (t.getPieceColor(t.get(tilesPreset[i])) != this.color) {
+      if (Tile.getPieceColor(Tile.get(tilesPreset[i])) != this.color) {
         range = range.concat(tilesPreset[i]);
       }
     }

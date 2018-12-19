@@ -20,13 +20,13 @@ Queen.prototype.getRangeOfMovement = function () {
   // Add every piece to the left of the rook.
   for (var i = toNumber(this.pos[0]); i >= 0; i--) {
     var c = toLetter(0 - -i) + this.pos[1];
-    if (t.exists(c)) {
+    if (Tile.exists(c)) {
       if (c != this.pos) {
-        if (t.getPieceColor(t.get(c)) == oppositeColor) {
+        if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = -100;
         }
-        else if (t.getPieceColor(t.get(c)) == this.color) {
+        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = -100;
         }
         else {
@@ -38,13 +38,13 @@ Queen.prototype.getRangeOfMovement = function () {
   // Add every piece to the right of the rook.
   for (var i = toNumber(this.pos[0]); i <= 8; i++) {
     var c = toLetter(0 - -i) + this.pos[1];
-    if (t.exists(c)) {
+    if (Tile.exists(c)) {
       if (c != this.pos) {
-        if (t.getPieceColor(t.get(c)) == oppositeColor) {
+        if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 100;
         }
-        else if (t.getPieceColor(t.get(c)) == this.color) {
+        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 100;
         }
         else {
@@ -56,13 +56,13 @@ Queen.prototype.getRangeOfMovement = function () {
   // Add every piece below the rook.
   for (var i = this.pos[1]; i >= 0; i--) {
     var c = this.pos[0] + (0 - -i);
-    if (t.exists(c)) {
+    if (Tile.exists(c)) {
       if (c != this.pos) {
-        if (t.getPieceColor(t.get(c)) == oppositeColor) {
+        if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = -100;
         }
-        else if (t.getPieceColor(t.get(c)) == this.color) {
+        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = -100;
         }
         else {
@@ -74,13 +74,13 @@ Queen.prototype.getRangeOfMovement = function () {
   // Add every piece to the up of the rook.
   for (var i = this.pos[1]; i <= 8; i++) {
     var c = this.pos[0] + (0 - -i);
-    if (t.exists(c)) {
+    if (Tile.exists(c)) {
       if (c != this.pos) {
-        if (t.getPieceColor(t.get(c)) == oppositeColor) {
+        if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 100;
         }
-        else if (t.getPieceColor(t.get(c)) == this.color) {
+        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 100;
         }
         else {
@@ -92,12 +92,12 @@ Queen.prototype.getRangeOfMovement = function () {
   // Add every tile to the up-right of the bishop.
   for (var i = 0; i <= 8; i++) {
     var c = toLetter(toNumber(this.pos[0]) - -i) + (this.pos[1] - -(i));
-    if (t.exists(c)) {
+    if (Tile.exists(c)) {
       if (c != this.pos) {
-        if (t.getPieceColor(t.get(c)) == this.color) {
+        if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 10;
         }
-        else if (t.getPieceColor(t.get(c)) == oppositeColor) {
+        else if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 10;
         }
@@ -110,12 +110,12 @@ Queen.prototype.getRangeOfMovement = function () {
   // Add every tile to the botton-left of the bishop.
   for (var i = 0; i <= 8; i++) {
     var c = toLetter(toNumber(this.pos[0]) - i) + (this.pos[1] - i);
-    if (t.exists(c)) {
+    if (Tile.exists(c)) {
       if (c != this.pos) {
-        if (t.getPieceColor(t.get(c)) == this.color) {
+        if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 10;
         }
-        else if (t.getPieceColor(t.get(c)) == oppositeColor) {
+        else if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 10;
         }
@@ -128,12 +128,12 @@ Queen.prototype.getRangeOfMovement = function () {
   // Add every tile to the bottom-right of the bishop.
   for (var i = 0; i <= 8; i++) {
     var c = toLetter(toNumber(this.pos[0]) - -i) + (this.pos[1] - (i));
-    if (t.exists(c)) {
+    if (Tile.exists(c)) {
       if (c != this.pos) {
-        if (t.getPieceColor(t.get(c)) == this.color) {
+        if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 10;
         }
-        else if (t.getPieceColor(t.get(c)) == oppositeColor) {
+        else if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 10;
         }
@@ -146,12 +146,12 @@ Queen.prototype.getRangeOfMovement = function () {
   // Add every tile to the up-left of the bishop.
   for (var i = 0; i <= 8; i++) {
     var c = toLetter(toNumber(this.pos[0]) - i) + (this.pos[1] - -i);
-    if (t.exists(c)) {
+    if (Tile.exists(c)) {
       if (c != this.pos) {
-        if (t.getPieceColor(t.get(c)) == this.color) {
+        if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 10;
         }
-        else if (t.getPieceColor(t.get(c)) == oppositeColor) {
+        else if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 10;
         }

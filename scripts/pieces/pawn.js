@@ -36,25 +36,25 @@ Pawn.prototype.getRangeOfMovement = function () {
   // depends on its color.
   if (this.color == "W") {
     // Move up one rank
-    if (t.get(this.pos[0] + (this.pos[1] - -1)) == "") {
+    if (Tile.get(this.pos[0] + (this.pos[1] - -1)) == "") {
       range = range.concat(this.pos[0] + (this.pos[1] - -1));
     }
     if (this.timesMoved == 0) { // A pawn can move two pieces ahead on their first move.
       // Make sure the tile is empty.
-      if (t.get(this.pos[0] + (this.pos[1] - -2)) == "") {
+      if (Tile.get(this.pos[0] + (this.pos[1] - -2)) == "") {
         range = range.concat(this.pos[0] + (this.pos[1] - -2));
       }
     }
   }
   if (this.color == "B") {
     // Move up down rank
-    if (t.get(this.pos[0] + (this.pos[1] - 1)) == "") {
+    if (Tile.get(this.pos[0] + (this.pos[1] - 1)) == "") {
       range = range.concat(this.pos[0] + (this.pos[1] - 1));
     }
     range = range.concat(this.pos[0] + (this.pos[1] - 1));
     if (this.timesMoved == 0) { // A pawn can move two pieces ahead on their first move.
       // Make sure the tile is empty.
-      if (t.get(this.pos[0] + (this.pos[1] - 2)) == "") {
+      if (Tile.get(this.pos[0] + (this.pos[1] - 2)) == "") {
         range = range.concat(this.pos[0] + (this.pos[1] - 2));
       }
     }
@@ -62,9 +62,9 @@ Pawn.prototype.getRangeOfMovement = function () {
   
   for (var i = 0; i < capture.length; i++) {
     // Make sure the tiles aren't off the board.
-    if (t.exists(capture[i])) {
+    if (Tile.exists(capture[i])) {
       // Make sure the tile it's trying to capture on isn't empty
-      if (t.get(capture[i]) != "") {
+      if (Tile.get(capture[i]) != "") {
         range = range.concat(capture[i]);
       }
     }

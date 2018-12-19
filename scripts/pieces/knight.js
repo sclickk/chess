@@ -34,9 +34,9 @@ Knight.prototype.getRangeOfMovement = function () {
   var t = new Tile();
   // Make sure every tile it can move to exists.
   for (var i = 0; i < tilesPreset.length; i++) {
-    if (t.exists(tilesPreset[i])) {
+    if (Tile.exists(tilesPreset[i])) {
       // No piece can capture it's own pieces.
-      if (t.getPieceColor(t.get(tilesPreset[i])) != this.color) {
+      if (Tile.getPieceColor(Tile.get(tilesPreset[i])) != this.color) {
         range = range.concat(tilesPreset[i]);
       }
     }
