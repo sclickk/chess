@@ -1,11 +1,15 @@
+
 /*
  * Manages the guides at the top and sides of the board. The guides show the
  * coordinates of every tile on the board.
  */
-function Guide() {
-  this.topGuide = $('#top-guide')[0];
-  this.sideGuide = $('#side-guide')[0];
-  this.exists = function () {
+class Guide {
+  constructor()
+  {
+    this.topGuide = $('#top-guide')[0];
+    this.sideGuide = $('#side-guide')[0];
+  }
+  exists() {
     if (this.topGuide.getAttribute("created")
      && this.sideGuide.getAttribute("created")) {
       return true;
@@ -13,7 +17,7 @@ function Guide() {
       return false;
     }
   }
-  this.create = function () {
+  create() {
     if (!this.exists()) {
       for (var i = 1; i < 9; i++) {
         this.topGuide.innerHTML += "<td>" + toLetter(i) + "</td>\n";
@@ -27,11 +31,11 @@ function Guide() {
       console.warn("The guides already exist.");
     }
   }
-  this.show = function () {
+  show() {
     this.topGuide.style = "display: table-row;";
     this.sideGuide.style = "display: table-row;";
   }
-  this.hide = function () {
+  hide() {
     this.topGuide.style = "display: none;";
     this.sideGuide.style = "display: none;";
   }
