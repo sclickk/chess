@@ -2,7 +2,8 @@
  * Manages the guides at the top and sides of the board. The guides show the
  * coordinates of every tile on the board.
  */
-class Guide {
+class Guide
+{
   constructor()
   {
     this.topGuide = $('#top-guide')[0];
@@ -11,7 +12,8 @@ class Guide {
   /**
    * Check if the HTML for the guides exist.
    */
-  exists() {
+  exists()
+  {
     if (this.topGuide.getAttribute("created")
      && this.sideGuide.getAttribute("created")) {
       return true;
@@ -22,7 +24,8 @@ class Guide {
   /**
    * Create the HTML for the guides.
    */
-  create() {
+  create()
+  {
     if (!this.exists()) {
       for (var i = 1; i < 9; i++) {
         this.topGuide.innerHTML += "<td>" + toLetter(i) + "</td>\n";
@@ -39,14 +42,16 @@ class Guide {
   /**
    * Show the guides with CSS
    */
-  show() {
+  show()
+  {
     this.topGuide.style = "display: table-row;";
     this.sideGuide.style = "display: table-row;";
   }
   /**
    * Hide the guides with CSS.
    */
-  hide() {
+  hide()
+  {
     this.topGuide.style = "display: none;";
     this.sideGuide.style = "display: none;";
   }
