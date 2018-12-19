@@ -18,7 +18,7 @@ class Pawn extends Piece {
 // opposing player can capture the pawn and move to the position where
 // it is as if though they had only moved their pawn once.
 Pawn.prototype.getRangeOfMovement = function () {
-  var range = new Array(),
+  var range = new Array();
   // This array holds tiles where the pawn is able to capture another piece.
   // Both black and white pawns capture to files adjacent to their
   // current position.
