@@ -1,43 +1,59 @@
-function UserInput() {
-  var userInputScope = this;
-  this.userInputHTML = document.getElementById("userInput");
-  this.get = function () {
-    return this.userInputHTML.value;
-  }
-  this.clear = function () {
-    this.userInputHTML.value = "";
+class UserInput {
+  constructor() {
+    var userInputScope = this;
+    this.userInput = $('#userInput')[0];
+    
+    // The mini keyboard makes it easier to play the game using a touchscreen.
+    this.miniKeyboard = $('#miniKeyboard');
+    // Event listener.
+    this.miniKeyboard.on('click', function (event) {
+      var c = userInputScope.userInput;
+      /*
+       * Insead of listening for individual keys, we listen for
+       * the entire keyboard, then get what the source element was.
+       */
+      if (event.target.className == "mk-key") {
+        if (event.target.innerHTML != "←") {
+          c.value += event.target.innerHTML;
+        } else {
+          c.value = c.value.substr(0, c.value.length - 1);
+        }
+      }
+    });
   }
 
-  // The mini keyboard makes it easier to play the game using a touchscreen.
-  this.miniKeyboard = document.getElementById("miniKeyboard");
+  /**
+   * Get the user's input.
+   */
+  get() {
+    return this.userInput.value;
+  }
 
-  this.createMiniKeyboard = function () {
+  /**
+   * Clear the user input field.
+   */
+  clear() {
+    this.userInput.value = "";
+  }
+
+  /**
+   * Sets up the mini keyboard
+   */
+  createMiniKeyboard() {
     var keys = [
       ["Q", "K", "B", "N", "R", "x"],
       ["a", "b", "c", "d", "e", "f", "g", "h"],
       ["1", "2", "3", "4", "5", "6", "7", "8"],
       ["O-O", "O-O-O", "←"]
     ];
-
-    this.miniKeyboard.innerHTML += "<hr/>";
+    this.miniKeyboard.append("<hr/>");
     for (var i = 0; i < keys.length; i++) {
       var c = keys[i];
       for (var j = 0; j < c.length; j++) {
         var d = c[j];
-        this.miniKeyboard.innerHTML += "<button class=\"mk-key\">" + d + "</button>";
+        this.miniKeyboard.append('<button class="mk-key">' + d + '</button>');
       }
-      this.miniKeyboard.innerHTML += "<br/>";
-    }
-  }
-
-  this.miniKeyboard.onclick = function () {
-    var c = userInputScope.userInputHTML;
-    if (event.srcElement.className == "mk-key") {
-      if (event.srcElement.innerHTML != "←") {
-        c.value += event.srcElement.innerHTML;
-      } else {
-        c.value = c.value.substr(0, c.value.length - 1);
-      }
+      this.miniKeyboard.append("<br/>");
     }
   }
 }
