@@ -109,10 +109,14 @@ class Game {
     console.log("Move successful:");
     if (this.checkedOpposingPlayer()) {
       this.moveLog.logCheck(input);
-      this.moveLog.turn == "W" ? this.moveLog.blackChecked = true : this.moveLog.whiteChecked = true;
+      this.moveLog.turn == "W" ?
+        this.moveLog.blackChecked = true :
+        this.moveLog.whiteChecked = true;
     } else {
       this.moveLog.logMove(input);
-      this.moveLog.turn == "W" ? this.moveLog.blackChecked = false : this.moveLog.whiteChecked = false;
+      this.moveLog.turn == "W" ?
+        this.moveLog.blackChecked = false :
+        this.moveLog.whiteChecked = false;
     }
     this.userInput.clear();
     this.moveLog.switchTurn();
