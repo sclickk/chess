@@ -24,9 +24,9 @@ class Tile {
    * returns "W", "B", or "E" (empty).
    */
   getPieceColor(tile) {
-    if (tile.match(/(♙|♖|♘|♗|♕|♔)/)) {
+    if (tile.match(/[♙♖♘♗♕♔]/)) {
       return "W";
-    } else if (tile.match(/(♟|♜|♞|♝|♛|♚)/)) {
+    } else if (tile.match(/[♟♜♞♝♛♚]/)) {
       return "B";
     } else {
       return "E";
