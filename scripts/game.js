@@ -5,12 +5,12 @@ class Game {
   constructor() {
     this.t = new Tile();
     this.moveLog = new Moves();
-    document.getElementById("moveButton").addEventListener("click", (event) => {
+    $('#moveButton').on('click', () => {
       this.performMove(this.userInput.get());
     });
-  
-    document.getElementById("userInput").addEventListener("keydown", (event) => {
-      var key = event.keyCode;  
+
+    $('#userInput').on('keydown', (event) => {
+      var key = event.keyCode;
       // Do the same thing when the enter key is pressed.
       if (key == 13) {
         this.performMove(this.userInput.get());
