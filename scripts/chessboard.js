@@ -1,17 +1,29 @@
-function ChessBoard(boardHTML) {
-  // Stores all 64 instances of the Tile() class.
-  this.tiles = new Array();
-  // Stores the 32 Piece()s.
-  this.pieces = new Array();
-  // Shows the guides at the top and sides of the board.
-  this.guides = new Guide();
-  this.boardHTML = document.getElementById(boardHTML);
-  this.getRank = function (rank) {
+class ChessBoard
+{
+  /**
+   * Sets up the chessboard on the screen.
+   * @param id The id of the chessboard.
+   */
+  constructor(id)
+  {
+    // Stores all 64 instances of the Tile() class.
+    this.tiles = new Array();
+    // Stores the 32 Piece()s.
+    this.pieces = new Array();
+    // Shows the guides at the top and sides of the board.
+    this.guides = new Guide();
+    this.board = $("#" + id);
   }
-  this.getFile = function (file) {
+  getRank (rank) {
   }
-  this.exists = function (board) {
-    if (board.getAttribute("isChessBoard") == "true") {
+  getFile (file) {
+  }
+  /**
+   * Determine if the chessboard already exists.
+   * @param board The id of the chessboard.
+   */
+  exists(board) {
+    if ($('#' + board).attr("isChessBoard") == "true") {
       return true;
     } else {
       return false;
@@ -25,31 +37,32 @@ function ChessBoard(boardHTML) {
    *   document.getElementById("e3").innerHTML;
    * Tile.get("e3") also does this.
    */
-  this.create = function () {
+  create() {
     // Don't create a second chessboard if it's already there.
-    if (!this.exists(this.boardHTML)) {
+    if (!this.exists(this.board.attr('id'))) {
       // HTML works with tables as cells within rows, so we first, create all
       // the rows ("ranks") on the board, then we can add a tile to the
       for (var i = 8; i > 0; i--) {
-        this.boardHTML.innerHTML += "<tr class=\"row\" id=\"" + i + "\"></tr>\n";
+        this.board.append("<tr class=\"row\" id=\"" + i + "\"></tr>\n");
         for (var j = 1; j < 9; j++) {
           this.tiles = this.tiles.concat(new Tile(toLetter(j) + i));
         }
       }
       // Add every Tile() instance onto the board.
       for (var i = 0; i < this.tiles.length; i++) {
-        document.getElementById(this.tiles[i].pos[1]).innerHTML += this.tiles[i].tileHTML;
+        var c = this.tiles[i];
+        $("#" + c.pos[1]).append(c.tileHTML);
       }
       // Mark that the board was already created.
-      this.boardHTML.setAttribute("isChessBoard", "true");
+      this.board.attr("isChessBoard", "true");
     } else {
-      console.warn("ChessBoard \'" + this.boardHTML.id + "\' already exists.");
+      console.warn("ChessBoard \'" + this.board.id + "\' already exists.");
     }
   }
   /*
    * This function creates variables that place the pieces on the board.
    */
-  this.fill = function () {
+  fill() {
     // For white, pawns go in rank 2, others in rank 1.
     var kingRank = "1",
         pawnRank = "2",
@@ -77,7 +90,7 @@ function ChessBoard(boardHTML) {
   /*
    * Remove every piece on the board.
    */
-  this.clear = function () {
+  clear() {
     var t = new Tile();
     for (var i = 1; i < 9; i++) {
       for (var j = 1; j < 9; j++) {
