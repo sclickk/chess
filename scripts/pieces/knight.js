@@ -31,7 +31,6 @@ Knight.prototype.getRangeOfMovement = function () {
     var vert = 1;
     var hor = 2;
   }
-  var t = new Tile();
   // Make sure every tile it can move to exists.
   for (var i = 0; i < tilesPreset.length; i++) {
     if (Tile.exists(tilesPreset[i])) {

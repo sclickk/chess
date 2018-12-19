@@ -11,7 +11,6 @@ class Rook extends Piece {
  */
 Rook.prototype.getRangeOfMovement = function () {
   var range = new Array();
-  var t = new Tile();
   var oppositeColor = (this.color == "W" ? "B" : "W");
   // Add every tile to the left of the rook.
   for (var i = toNumber(this.pos[0]); i >= 0; i--) {

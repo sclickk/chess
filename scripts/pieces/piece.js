@@ -8,7 +8,6 @@
  * - rangeOfMovement = where a piece can move, different for every type of piece.
  */
 function Piece(pos, char) {
-  var t = new Tile();
   if (pos != undefined) {
     if (pos.match(/[a-h][1-8]/)) {
       this.pos = pos;

@@ -10,7 +10,8 @@ class Bishop extends Piece {
 // king can easily defend itself by moving to vertically or horizonally to
 // another square.
 Bishop.prototype.getRangeOfMovement = function () {
-  var range = new Array(), t = new Tile(), oppositeColor = (this.color == "W" ? "B" : "W");
+  var range = new Array(),
+      oppositeColor = (this.color == "W" ? "B" : "W");
   // Add every tile to the up-right of the bishop.
   for (var i = 0; i <= 8; i++) {
     var c = toLetter(toNumber(this.pos[0]) - -i) + (this.pos[1] - -(i));

@@ -21,7 +21,6 @@ King.prototype.getRangeOfMovement = function () {
     toLetter(toNumber(this.pos[0]) - 1) + (this.pos[1] - -1),
     toLetter(toNumber(this.pos[0]) - 1) + (this.pos[1] - 1)
   ];
-  var t = new Tile();
   for (var i = 0; i < tilesPreset.length; i++) {
     if (Tile.exists(tilesPreset[i])) {
       // This applies to both empty tiles as well.

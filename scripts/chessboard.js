@@ -103,7 +103,6 @@ class ChessBoard
    * Remove every piece on the board.
    */
   clear() {
-    var t = new Tile();
     for (var i = 1; i < 9; i++) {
       for (var j = 1; j < 9; j++) {
         Tile.set(toLetter(i) + j, "");

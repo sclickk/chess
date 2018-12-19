@@ -3,7 +3,6 @@ class Game {
    * Create a new instance of the Game() class.
    */
   constructor() {
-    this.t = new Tile();
     this.moveLog = new Moves();
     $('#moveButton').on('click', () => {
       this.performMove(this.userInput.get());
