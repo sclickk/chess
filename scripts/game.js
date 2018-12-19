@@ -1,12 +1,3 @@
-/*
- * The class hierarchy goes real deep:
- *
- * + Game
- * |+ WRa                    -- Instance of the Rook class
- * ||- getRangeOfMovement()  -- function of Rook
- * ||+ p                     -- Instance of the Piece class
- * |||- pos                  -- Property of Piece
- */
 class Game {
   /**
    * Create a new instance of the Game() class.
