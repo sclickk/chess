@@ -22,7 +22,7 @@ function Piece(pos, char) {
     this.rangeOfMovement = new Array();
   }
 
-  /*
+  /**
    * This manages instances whereby a rule depends on whether on not a piece
    * has moved, such as castling.
    */
@@ -37,13 +37,18 @@ function Piece(pos, char) {
     return t.get(this.pos) != this.char ? true : false;
   }
 
-  /*
-   * Change the current position to newPos.
+  /**
+   * Change the current position of the piece.
+   * @param newPos The new position of the piece
    */
   this.changePos = function (newPos) {
+    // Empty the "square of departure".
     t.set(this.pos, "");
+    // Change the pos variable.
     this.pos = newPos;
+    // Place the piece on the "square of arrival".
     t.set(newPos, this.char);
+    // Increment timesMoved.
     this.timesMoved++;
   }
 
