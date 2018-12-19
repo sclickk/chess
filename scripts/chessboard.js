@@ -59,6 +59,16 @@ class ChessBoard
       console.warn("ChessBoard \'" + this.board.id + "\' already exists.");
     }
   }
+
+  /**
+   * Add a piece to the pieces array.
+   * @param {Piece} piece The piece to add.
+   */
+  addPiece(piece)
+  {
+    this.pieces = this.pieces.concat(piece);
+  }
+
   /*
    * This function creates variables that place the pieces on the board.
    */
@@ -68,16 +78,16 @@ class ChessBoard
         pawnRank = "2",
         playerColor = "W";
     for (var i = 0; i < 2; i++) {
-      this.pieces = this.pieces.concat(new Rook("a" + kingRank, playerColor));
-      this.pieces = this.pieces.concat(new Knight("b" + kingRank, playerColor));
-      this.pieces = this.pieces.concat(new Bishop("c" + kingRank, playerColor));
-      this.pieces = this.pieces.concat(new Queen("d" + kingRank, playerColor));
-      this.pieces = this.pieces.concat(new King("e" + kingRank, playerColor));
-      this.pieces = this.pieces.concat(new Bishop("f" + kingRank, playerColor));
-      this.pieces = this.pieces.concat(new Knight("g" + kingRank, playerColor));
-      this.pieces = this.pieces.concat(new Rook("h" + kingRank, playerColor));
+      this.addPiece(new Rook("a" + kingRank, playerColor));
+      this.addPiece(new Knight("b" + kingRank, playerColor));
+      this.addPiece(new Bishop("c" + kingRank, playerColor));
+      this.addPiece(new Queen("d" + kingRank, playerColor));
+      this.addPiece(new King("e" + kingRank, playerColor));
+      this.addPiece(new Bishop("f" + kingRank, playerColor));
+      this.addPiece(new Knight("g" + kingRank, playerColor));
+      this.addPiece(new Rook("h" + kingRank, playerColor));
       for (var j = 1; j < 9; j++) {
-        this.pieces = this.pieces.concat(new Pawn(toLetter(j) + pawnRank, playerColor));
+        this.addPiece(new Pawn(toLetter(j) + pawnRank, playerColor));
       }
       // For black, pawns go in rank 7, others in rank 8.
       kingRank = "8";
