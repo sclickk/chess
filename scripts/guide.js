@@ -3,11 +3,11 @@
  * coordinates of every tile on the board.
  */
 function Guide() {
-  var topGuide = document.getElementById("top-guide");
-  var sideGuide = document.getElementById("side-guide");
+  this.topGuide = $('#top-guide')[0];
+  this.sideGuide = $('#side-guide')[0];
   this.exists = function () {
-    if (topGuide.getAttribute("created")
-     && sideGuide.getAttribute("created")) {
+    if (this.topGuide.getAttribute("created")
+     && this.sideGuide.getAttribute("created")) {
       return true;
     } else {
       return false;
@@ -16,23 +16,23 @@ function Guide() {
   this.create = function () {
     if (!this.exists()) {
       for (var i = 1; i < 9; i++) {
-        topGuide.innerHTML += "<td>" + toLetter(i) + "</td>\n";
+        this.topGuide.innerHTML += "<td>" + toLetter(i) + "</td>\n";
       }
       for (var i = 8; i > 0; i--) {
-        sideGuide.innerHTML += "<tr><td>" + i + "</td></tr>\n";
+        this.sideGuide.innerHTML += "<tr><td>" + i + "</td></tr>\n";
       }
-      topGuide.setAttribute("created", "true");
-      sideGuide.setAttribute("created", "true");
+      this.topGuide.setAttribute("created", "true");
+      this.sideGuide.setAttribute("created", "true");
     } else {
       console.warn("The guides already exist.");
     }
   }
   this.show = function () {
-    topGuide.style = "display: table-row;";
-    sideGuide.style = "display: table-row;";
+    this.topGuide.style = "display: table-row;";
+    this.sideGuide.style = "display: table-row;";
   }
   this.hide = function () {
-    topGuide.style = "display: none;";
-    sideGuide.style = "display: none;";
+    this.topGuide.style = "display: none;";
+    this.sideGuide.style = "display: none;";
   }
 }
