@@ -70,7 +70,8 @@ class ChessBoard
   }
 
   /*
-   * This function creates variables that place the pieces on the board.
+   * This function creates variables that place the pieces on the board in the
+   * standard position.
    */
   fill() {
     // For white, pawns go in rank 2, others in rank 1.
@@ -94,6 +95,7 @@ class ChessBoard
       pawnRank = "7";
       playerColor = "B";
     }
+    // Debugging
     console.log("Successfully created " + this.pieces.length + " pieces.");
     console.log(this.pieces);
   }
