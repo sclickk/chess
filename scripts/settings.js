@@ -4,13 +4,13 @@
 function Settings() {
   var settingsScope = this;
 
-  this.settingsMenu = document.getElementById("settings");
-  this.settingsButton = document.getElementById("settingsButton");
+  this.settingsMenu = $('#settings')[0];
+  this.settingsButton = $('#settingsButton')[0];
   /*
    * Show the settings button at the start of the game.
    */
   this.showSettingsButton = function () {
-    this.settingsButton.style = "display: inline-block;";
+    $('#settingsButton').css("display", "inline-block");
   }
   this.settingsButton.onclick = function () {
     var c = settingsScope.settingsMenu.style,
@@ -19,9 +19,9 @@ function Settings() {
     d.innerHTML = (c.display == "none" ? "Show" : "Hide") + " Settings";
   }
 
-  this.showCoordinates = document.getElementById("showCoordinates");
+  this.showCoordinates = $('#showCoordinates')[0];
   this.showCoordinates.onclick = function () {
-    var guideToggle = new Guide()
+    var guideToggle = new Guide(),
         option = settingsScope.showCoordinates;
     option.checked ? guideToggle.show() : guideToggle.hide();
   }
@@ -47,10 +47,11 @@ function Settings() {
     }
   }
 
-  this.showMiniKeyboard = document.getElementById("showMiniKeyboard");
+  this.showMiniKeyboard = $('#showMiniKeyboard')[0];
   this.showMiniKeyboard.onchange = function () {
-    var miniKeyboard = document.getElementById("miniKeyboard"),
-        option = settingsScope.showMiniKeyboard;
-    miniKeyboard.style = "display: " + (option.checked ? "block;" : "none;");
+    var option = settingsScope.showMiniKeyboard;
+    $('#miniKeyboard').css(
+      'display', (option.checked ? "block" : "none")
+    );
   }
 }
