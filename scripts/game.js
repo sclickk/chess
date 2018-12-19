@@ -34,7 +34,9 @@ class Game {
     this.userInput.createMiniKeyboard();
     
     this.chessBoard = new ChessBoard("board");
-    document.getElementById("gameInteraction").style = "display: block;";
+    $("#gameInteraction").css(
+      "display", "block"
+    );
     this.gameSettings = new Settings();
     this.gameSettings.showSettingsButton();
     // Creates the guides on the top and left of the board.
