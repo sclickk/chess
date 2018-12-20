@@ -51,8 +51,9 @@ class Tile {
    * coordinates. For example:
    *   fromRef('a3', 2, -1) returns 'c2', 2 files right, 1 file down.
    * This is useful when determining the places of boards
-   * @param files The number of files to adjust (negative left, positive right)
-   * @param ranks The number of ranks to adjust (negative down, positive up)
+   * @param square The square to serve as frame of reference.
+   * @param files The number of files to adjust (negative left, positive right).
+   * @param ranks The number of ranks to adjust (negative down, positive up).
    */
   static fromRef(square, files, ranks)
   {
