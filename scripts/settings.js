@@ -13,21 +13,25 @@ function Settings() {
     $('#settingsButton').css("display", "inline-block");
   }
   this.settingsButton.onclick = function () {
-    var c = settingsScope.settingsMenu.style,
-        d = settingsScope.settingsButton;
-    c.display = (c.display == "none" ? "block" : "none");
-    d.innerHTML = (c.display == "none" ? "Show" : "Hide") + " Settings";
+    $('#settings').css(
+      'display', ($('#settings').css('display') == 'none' ? 'block' : 'none')
+    );
+    $('#settingsButton').text(
+      ($('#settings').css('display') == 'none' ?
+      'Show' : 'Hide') + ' Settings'
+    );
   }
 
-  this.showCoordinates = $('#showCoordinates')[0];
-  this.showCoordinates.onclick = function () {
-    var guideToggle = new Guide(),
-        option = settingsScope.showCoordinates;
-    option.checked ? guideToggle.show() : guideToggle.hide();
-  }
+  this.showCoordinates = $('#showCoordinates');
+  this.showCoordinates.on('click', function () {
+    var guideToggle = new Guide();
+    this.checked ? guideToggle.show() : guideToggle.hide();
+  });
 
   $('#overrideFonts').on('click', function (event) {
-    $('body').css("font-family", this.checked ? "sans-serif" : "");
+    $('body').css(
+      "font-family", (this.checked ? "sans-serif" : "")
+    );
   });
 
   /**
@@ -52,8 +56,8 @@ function Settings() {
   /**
    * Set up the mini keyboard.
    */
-  this.showMiniKeyboard = $('#showMiniKeyboard')[0];
-  $('#showMiniKeyboard').on('change', function () {
+  this.showMiniKeyboard = $('#showMiniKeyboard');
+  this.showMiniKeyboard.on('change', function () {
     $('#miniKeyboard').css(
       'display', (this.checked ? "block" : "none")
     );
