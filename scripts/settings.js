@@ -1,4 +1,3 @@
-
 /*
  * These functions deal with game settings.
  */
