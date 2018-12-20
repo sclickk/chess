@@ -24,6 +24,7 @@ Knight.prototype.getRangeOfMovement = function () {
     //   this.pos[1] + hor
     // Instead of:
     //   this.pos[1] - -hor
+    // Two negative signs = positive sign.
     tilesPreset = tilesPreset.concat((toLetter(toNumber(this.pos[0]) + hor)) + (this.pos[1] - -vert));
     tilesPreset = tilesPreset.concat((toLetter(toNumber(this.pos[0]) + hor)) + (this.pos[1] - vert));
     tilesPreset = tilesPreset.concat((toLetter(toNumber(this.pos[0]) - hor)) + (this.pos[1] - -vert));
