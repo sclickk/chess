@@ -36,13 +36,16 @@ Pawn.prototype.getRangeOfMovement = function () {
   var parity = (this.color == "W" ? 1 : -1);
 
   // Move up or down one rank.
-  if (Tile.get(Tile.fromRef(this.pos, 0, parity * 1)) == "") {
+  var one_square = Tile.fromRef(this.pos, 0, parity * 1);
+  if (Tile.get(one_square) == "") {
     range = range.concat(Tile.fromRef(this.pos, 0, parity * 1));
   }
 
-  if (this.timesMoved == 0) { // A pawn can move two pieces ahead on their first move.
+  // A pawn can move two pieces ahead on their first move.
+  if (this.timesMoved == 0) { 
     // Make sure the tile is empty.
-    if (Tile.get(Tile.fromRef(this.pos, 0, parity * 2)) == "") {
+    var two_squares = Tile.fromRef(this.pos, 0, parity * 2);
+    if (Tile.get(two_squares) == "") {
       range = range.concat(Tile.fromRef(this.pos, 0, parity * 2));
     }
   }
