@@ -2,13 +2,13 @@ class Pawn extends Piece {
   constructor(pos, color) {
     super(pos, color == "W" ? "♙" : "♟");
   }
+}
 
-  /*
-  * Pawns are the only piece in the game that can be promoted to another
-  * type of piece.
-  */
-  promote(piece) {
-  }
+/*
+ * Pawns are the only piece in the game that can be promoted to another
+ * type of piece.
+ */
+Pawn.prototype.promote = function(piece) {
 }
 
 // Pawns can seem simple but are quite quirky pieces. Pawns can move either
