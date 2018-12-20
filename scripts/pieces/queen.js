@@ -16,7 +16,7 @@ Queen.prototype.getRangeOfMovement = function () {
   var range = new Array();
   var tiles = new Array();
   var oppositeColor = (this.color == "W" ? "B" : "W");
-  // Add every piece to the left of the rook.
+  // Add every piece to the left of the queen.
   for (var i = toNumber(this.pos[0]); i >= 0; i--) {
     var c = toLetter(0 - -i) + this.pos[1];
     if (Tile.exists(c)) {
@@ -34,7 +34,7 @@ Queen.prototype.getRangeOfMovement = function () {
       }
     }
   }
-  // Add every piece to the right of the rook.
+  // Add every piece to the right of the queen.
   for (var i = toNumber(this.pos[0]); i <= 8; i++) {
     var c = toLetter(0 - -i) + this.pos[1];
     if (Tile.exists(c)) {
@@ -52,7 +52,7 @@ Queen.prototype.getRangeOfMovement = function () {
       }
     }
   }
-  // Add every piece below the rook.
+  // Add every piece below the queen.
   for (var i = this.pos[1]; i >= 0; i--) {
     var c = this.pos[0] + (0 - -i);
     if (Tile.exists(c)) {
@@ -70,7 +70,7 @@ Queen.prototype.getRangeOfMovement = function () {
       }
     }
   }
-  // Add every piece to the up of the rook.
+  // Add every piece to the up of the queen.
   for (var i = this.pos[1]; i <= 8; i++) {
     var c = this.pos[0] + (0 - -i);
     if (Tile.exists(c)) {
@@ -88,7 +88,7 @@ Queen.prototype.getRangeOfMovement = function () {
       }
     }
   }
-  // Add every tile to the up-right of the bishop.
+  // Add every tile to the up-right of the queen.
   for (var i = 0; i <= 8; i++) {
     var c = Tile.fromRef(this.pos, i, i);
     if (Tile.exists(c)) {
@@ -106,7 +106,7 @@ Queen.prototype.getRangeOfMovement = function () {
       }
     }
   }
-  // Add every tile to the botton-left of the bishop.
+  // Add every tile to the botton-left of the queen.
   for (var i = 0; i <= 8; i++) {
     var c = Tile.fromRef(this.pos, -i, -i);
     if (Tile.exists(c)) {
@@ -124,7 +124,7 @@ Queen.prototype.getRangeOfMovement = function () {
       }
     }
   }
-  // Add every tile to the bottom-right of the bishop.
+  // Add every tile to the bottom-right of the queen.
   for (var i = 0; i <= 8; i++) {
     var c = Tile.fromRef(this.pos, i, -i);
     if (Tile.exists(c)) {
@@ -142,7 +142,7 @@ Queen.prototype.getRangeOfMovement = function () {
       }
     }
   }
-  // Add every tile to the up-left of the bishop.
+  // Add every tile to the up-left of the queen.
   for (var i = 0; i <= 8; i++) {
     var c = Tile.fromRef(this.pos, -i, i);
     if (Tile.exists(c)) {
