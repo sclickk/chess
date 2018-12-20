@@ -14,7 +14,7 @@ Bishop.prototype.getRangeOfMovement = function () {
       oppositeColor = (this.color == "W" ? "B" : "W");
   // Add every tile to the up-right of the bishop.
   for (var i = 0; i <= 8; i++) {
-    var c = toLetter(toNumber(this.pos[0]) - -i) + (this.pos[1] - -(i));
+    var c = Tile.fromRef(this.pos, i, i);
     if (Tile.exists(c)) {
       if (c != this.pos) {
         if (Tile.getPieceColor(Tile.get(c)) == this.color) {
@@ -32,7 +32,7 @@ Bishop.prototype.getRangeOfMovement = function () {
   }
   // Add every tile to the botton-left of the bishop.
   for (var i = 0; i <= 8; i++) {
-    var c = toLetter(toNumber(this.pos[0]) - i) + (this.pos[1] - i);
+    var c = Tile.fromRef(this.pos, -i, -i);
     if (Tile.exists(c)) {
       if (c != this.pos) {
         if (Tile.getPieceColor(Tile.get(c)) == this.color) {
@@ -50,7 +50,7 @@ Bishop.prototype.getRangeOfMovement = function () {
   }
   // Add every tile to the bottom-right of the bishop.
   for (var i = 0; i <= 8; i++) {
-    var c = toLetter(toNumber(this.pos[0]) - -i) + (this.pos[1] - (i));
+    var c = Tile.fromRef(this.pos, i, -i);
     if (Tile.exists(c)) {
       if (c != this.pos) {
         if (Tile.getPieceColor(Tile.get(c)) == this.color) {
@@ -68,7 +68,7 @@ Bishop.prototype.getRangeOfMovement = function () {
   }
   // Add every tile to the up-left of the bishop.
   for (var i = 0; i <= 8; i++) {
-    var c = toLetter(toNumber(this.pos[0]) - i) + (this.pos[1] - -i);
+    var c = Tile.fromRef(this.pos, -i, i);
     if (Tile.exists(c)) {
       if (c != this.pos) {
         if (Tile.getPieceColor(Tile.get(c)) == this.color) {
