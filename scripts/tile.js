@@ -45,4 +45,40 @@ class Tile {
       return false;
     }
   }
+
+  /**
+   * This function takes the coordinates of a square and returns adjusted
+   * coordinates. For example:
+   *   fromRef('a3', 2, -1) returns 'c2', 2 files right, 1 file down.
+   * This is useful when determining the places of boards
+   * @param files The number of files to adjust (negative left, positive right)
+   * @param ranks The number of ranks to adjust (negative down, positive up)
+   */
+  static fromRef(square, files, ranks)
+  {
+    var square_file = toNumber(square[0]);
+    var square_rank = square[1];
+
+    if (files > 0) {
+      for (let i = 0; i < files; i++) {
+        square_file++;
+      }
+    } else if (files < 0) { // do nothing if files = 0
+      for (let i = 0; i > files; i--) {
+        square_file--;
+      }
+    }
+
+    if (ranks > 0) {
+      for (let i = 0; i < ranks; i++) {
+        square_rank++;
+      }
+    } else if (ranks < 0) { // do nothing if ranks = 0
+      for (let i = 0; i > ranks; i--) {
+        square_rank--;
+      }
+    }
+
+    return (toLetter(square_file) + square_rank);
+  }
 }
