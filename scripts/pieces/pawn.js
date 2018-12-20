@@ -33,29 +33,17 @@ Pawn.prototype.getRangeOfMovement = function () {
   // White pawns move up ranks, black pawns move down ranks.
   // Pawns are the only pieces where their direction of movement
   // depends on its color.
-  if (this.color == "W") {
-    // Move up one rank
-    if (Tile.get(Tile.fromRef(this.pos, 0, 1)) == "") {
-      range = range.concat(Tile.fromRef(this.pos, 0, 1));
-    }
-    if (this.timesMoved == 0) { // A pawn can move two pieces ahead on their first move.
-      // Make sure the tile is empty.
-      if (Tile.get(Tile.fromRef(this.pos, 0, 2)) == "") {
-        range = range.concat(Tile.fromRef(this.pos, 0, 2));
-      }
-    }
+  var parity = (this.color == "W" ? 1 : -1);
+
+  // Move up or down one rank.
+  if (Tile.get(Tile.fromRef(this.pos, 0, parity * 1)) == "") {
+    range = range.concat(Tile.fromRef(this.pos, 0, parity * 1));
   }
-  if (this.color == "B") {
-    // Move up down rank
-    if (Tile.get(Tile.fromRef(this.pos, 0, -1)) == "") {
-      range = range.concat(Tile.fromRef(this.pos, 0, -1));
-    }
-    range = range.concat(Tile.fromRef(this.pos, 0, -1));
-    if (this.timesMoved == 0) { // A pawn can move two pieces ahead on their first move.
-      // Make sure the tile is empty.
-      if (Tile.get(Tile.fromRef(this.pos, 0, -2)) == "") {
-        range = range.concat(Tile.fromRef(this.pos, 0, -2));
-      }
+
+  if (this.timesMoved == 0) { // A pawn can move two pieces ahead on their first move.
+    // Make sure the tile is empty.
+    if (Tile.get(Tile.fromRef(this.pos, 0, parity * 2)) == "") {
+      range = range.concat(Tile.fromRef(this.pos, 0, parity * 2));
     }
   }
   
