@@ -12,14 +12,14 @@ class King extends Piece {
 King.prototype.getRangeOfMovement = function () {
   var range = new Array();
   var tilesPreset = [
-    this.pos[0] + (this.pos[1] - -1),
-    this.pos[0] + (this.pos[1] - 1),
-    toLetter(toNumber(this.pos[0]) - -1) + this.pos[1],
-    toLetter(toNumber(this.pos[0]) - 1) + this.pos[1],
-    toLetter(toNumber(this.pos[0]) - -1) + (this.pos[1] - -1),
-    toLetter(toNumber(this.pos[0]) - -1) + (this.pos[1] - 1),
-    toLetter(toNumber(this.pos[0]) - 1) + (this.pos[1] - -1),
-    toLetter(toNumber(this.pos[0]) - 1) + (this.pos[1] - 1)
+    Tile.fromRef(this.pos, 0, 1),
+    Tile.fromRef(this.pos, 0, -1),
+    Tile.fromRef(this.pos, 1, 0),
+    Tile.fromRef(this.pos, -1, 0),
+    Tile.fromRef(this.pos, 1, 1),
+    Tile.fromRef(this.pos, 1, -1),
+    Tile.fromRef(this.pos, -1, 1),
+    Tile.fromRef(this.pos, -1, -1)
   ];
   for (var i = 0; i < tilesPreset.length; i++) {
     if (Tile.exists(tilesPreset[i])) {
