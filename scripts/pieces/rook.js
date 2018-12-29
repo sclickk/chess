@@ -30,11 +30,9 @@ Rook.prototype.getRangeOfMovement = function () {
         if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = -100;
-        }
-        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
+        } else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = -100;
-        }
-        else {
+        } else {
           range = range.concat(c);
         }
       }
@@ -48,11 +46,9 @@ Rook.prototype.getRangeOfMovement = function () {
         if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 100;
-        }
-        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
+        } else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 100;
-        }
-        else {
+        } else {
           range = range.concat(c);
         }
       }
@@ -66,11 +62,9 @@ Rook.prototype.getRangeOfMovement = function () {
         if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = -100;
-        }
-        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
+        } else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = -100;
-        }
-        else {
+        } else {
           range = range.concat(c);
         }
       }
@@ -84,11 +78,9 @@ Rook.prototype.getRangeOfMovement = function () {
         if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 100;
-        }
-        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
+        } else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 100;
-        }
-        else {
+        } else {
           range = range.concat(c);
         }
       }

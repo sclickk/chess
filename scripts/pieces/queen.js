@@ -34,11 +34,9 @@ Queen.prototype.getRangeOfMovement = function () {
         if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = -100;
-        }
-        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
+        } else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = -100;
-        }
-        else {
+        } else {
           range = range.concat(c);
         }
       }
@@ -52,11 +50,9 @@ Queen.prototype.getRangeOfMovement = function () {
         if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 100;
-        }
-        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
+        } else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 100;
-        }
-        else {
+        } else {
           range = range.concat(c);
         }
       }
@@ -70,11 +66,9 @@ Queen.prototype.getRangeOfMovement = function () {
         if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = -100;
-        }
-        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
+        } else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = -100;
-        }
-        else {
+        } else {
           range = range.concat(c);
         }
       }
@@ -88,11 +82,9 @@ Queen.prototype.getRangeOfMovement = function () {
         if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 100;
-        }
-        else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
+        } else if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 100;
-        }
-        else {
+        } else {
           range = range.concat(c);
         }
       }
@@ -105,12 +97,10 @@ Queen.prototype.getRangeOfMovement = function () {
       if (c != this.pos) {
         if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 10;
-        }
-        else if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
+        } else if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 10;
-        }
-        else {
+        } else {
           range = range.concat(c);
         }
       }
@@ -123,12 +113,10 @@ Queen.prototype.getRangeOfMovement = function () {
       if (c != this.pos) {
         if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 10;
-        }
-        else if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
+        } else if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 10;
-        }
-        else {
+        } else {
           range = range.concat(c);
         }
       }
@@ -141,12 +129,10 @@ Queen.prototype.getRangeOfMovement = function () {
       if (c != this.pos) {
         if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 10;
-        }
-        else if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
+        } else if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 10;
-        }
-        else {
+        } else {
           range = range.concat(c);
         }
       }
@@ -159,12 +145,10 @@ Queen.prototype.getRangeOfMovement = function () {
       if (c != this.pos) {
         if (Tile.getPieceColor(Tile.get(c)) == this.color) {
           i = 10;
-        }
-        else if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
+        } else if (Tile.getPieceColor(Tile.get(c)) == oppositeColor) {
           range = range.concat(c);
           i = 10;
-        }
-        else {
+        } else {
           range = range.concat(c);
         }
       }
