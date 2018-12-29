@@ -49,6 +49,8 @@ class Tile {
   /**
    * This function takes the coordinates of a square and returns adjusted
    * coordinates. For example:
+   *   fromRef('a3', 0, 0) returns 'a3'.
+   *   fromRef('a3', 0, -1) returns 'a2', 1 file down.
    *   fromRef('a3', 2, -1) returns 'c2', 2 files right, 1 file down.
    * This is useful when determining the places of boards
    * @param square The square to serve as frame of reference.
