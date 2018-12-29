@@ -92,9 +92,8 @@ class Game {
    * Determine if an input is too long, too short, or if there is no input.
    */
   badInput(input) {
-    if (input.length > 7) {
-      return true;
-    } else if (input.length < 2) {
+    if (input.length > 7
+     || input.length < 2) {
       return true;
     } else {
       return false;
