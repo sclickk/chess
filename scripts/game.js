@@ -17,7 +17,7 @@ class Game {
     });
   }
   /*
-   * This get's called once the player clicks on "New Game".
+   * This gets called once the player clicks on "New Game".
    */
   start() {
     this.userInput = new UserInput();
