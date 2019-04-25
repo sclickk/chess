@@ -15,12 +15,8 @@ class Guide
    */
   exists()
   {
-    if (this.topGuide[0].getAttribute("created")
-     && this.sideGuide[0].getAttribute("created")) {
-      return true;
-    } else {
-      return false;
-    }
+    return ((this.topGuide[0].getAttribute("created")
+          && this.sideGuide[0].getAttribute("created")) ? true : false);
   }
 
   /**
