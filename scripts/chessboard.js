@@ -23,11 +23,7 @@ class ChessBoard
    * @param board The id of the chessboard.
    */
   exists(board) {
-    if ($('#' + board).attr("isChessBoard") == "true") {
-      return true;
-    } else {
-      return false;
-    }
+    return ($('#' + board).attr("isChessBoard") == "true");
   }
   /*
    * This does the boilerplate work of generating 64 game tiles on the board
@@ -40,7 +36,7 @@ class ChessBoard
   create() {
     // Don't create a second chessboard if it's already there.
     if (!this.exists(this.board.attr('id'))) {
-      // HTML works with tables as cells within rows, so we first, create all
+      // HTML works with tables as cells within rows, so we first create all
       // the rows ("ranks") on the board, then we can add a tile to the
       for (var i = 8; i > 0; i--) {
         this.board.append("<tr class=\"row\" id=\"" + i + "\"></tr>\n");
@@ -64,8 +60,7 @@ class ChessBoard
    * Add a piece to the pieces array.
    * @param {Piece} piece The piece to add.
    */
-  addPiece(piece)
-  {
+  addPiece(piece) {
     this.pieces = this.pieces.concat(piece);
   }
 

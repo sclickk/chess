@@ -25,7 +25,8 @@ class Settings {
     this.showCoordinates.on('click', function () {
       var guideToggle = new Guide();
       this.checked ? guideToggle.show() : guideToggle.hide();
-    });
+		});
+		// Override theme fonts
     $('#overrideFonts').on('click', function (event) {
       $('body').css(
         "font-family", (this.checked ? "sans-serif" : "")
@@ -50,8 +51,7 @@ class Settings {
     /**
      * Set up the mini keyboard.
      */
-    this.showMiniKeyboard = $('#showMiniKeyboard');
-    this.showMiniKeyboard.on('change', function () {
+    $('#showMiniKeyboard').on('change', function () {
       $('#miniKeyboard').css('display', (this.checked ? "block" : "none"));
     });
   }

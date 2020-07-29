@@ -13,8 +13,7 @@ class Guide
   /**
    * Check if the HTML for the guides exist.
    */
-  exists()
-  {
+  exists() {
     return ((this.topGuide[0].getAttribute("created")
           && this.sideGuide[0].getAttribute("created")) ? true : false);
   }
@@ -22,8 +21,7 @@ class Guide
   /**
    * Create the HTML for the guides.
    */
-  create()
-  {
+  create() {
     if (!this.exists()) {
       for (var i = 1; i < 9; i++) {
         this.topGuide.append('<td>' + toLetter(i) + '</td>\n');
@@ -42,8 +40,7 @@ class Guide
    * Set the CSS `display` setting of the guides
    * @param style The CSS `display` of the guides.
    */
-  setGuideDisplay(style)
-  {
+  setGuideDisplay(style) {
     this.topGuide.css('display', style);
     this.sideGuide.css('display', style);
   }
@@ -51,12 +48,10 @@ class Guide
   /**
    * Show the guides.
    */
-  show()
-  { this.setGuideDisplay('table-row'); }
+  show() { this.setGuideDisplay('table-row'); }
 
   /**
    * Hide the guides.
    */
-  hide()
-  { this.setGuideDisplay('none'); }
+  hide() { this.setGuideDisplay('none'); }
 }
